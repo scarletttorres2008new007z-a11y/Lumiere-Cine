@@ -188,6 +188,160 @@
   }
 
 
+
+  /* Cartelera: selector de días */
+  .day-stub {
+    @apply flex min-w-[5.5rem] shrink-0 flex-col items-center gap-1 rounded-2xl border border-ink-700 bg-ink-900 px-4 py-4 text-cream-300 transition hover:border-cream-100 hover:text-cream-50;
+  }
+  .day-stub.is-active {
+    @apply border-carmine-500 bg-carmine-500 text-white;
+  }
+
+  /* Cartelera: hora estilo tablero de aeropuerto */
+  .flap-time {
+    @apply flex gap-0.5 font-mono text-lg font-bold text-ink-950;
+  }
+  .flap-time span {
+    @apply relative grid h-9 w-6 place-items-center rounded bg-cream-100;
+  }
+  .flap-time span:nth-child(3) {
+    @apply w-2 bg-transparent text-cream-100;
+  }
+  .flap-time span::after {
+    content: '';
+    @apply absolute inset-x-0 top-1/2 h-px bg-ink-950/25;
+  }
+  .flap-time.flip span {
+    animation: flap 0.6s cubic-bezier(0.3, 0.7, 0.4, 1) both;
+    animation-delay: inherit;
+    transform-origin: center;
+  }
+
+  /* Galería: cinta de película */
+  .reel {
+    @apply bg-ink-950 py-3;
+  }
+  .reel-holes {
+    @apply mx-auto h-4;
+    background-image: repeating-linear-gradient(90deg, transparent 0 10px, #f2ebdd 10px 22px, transparent 22px 32px);
+    background-size: 32px 10px;
+    background-repeat: repeat-x;
+    background-position: 0 center;
+  }
+  #reel {
+    cursor: grab;
+  }
+  #reel.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+  }
+  #reel.is-dragging img {
+    pointer-events: none;
+  }
+
+  /* Nosotros */
+  .letterbox::before,
+  .letterbox::after {
+    content: '';
+    @apply absolute inset-x-0 z-0 h-[14%] bg-ink-950;
+  }
+  .letterbox::before {
+    @apply top-0;
+  }
+  .letterbox::after {
+    @apply bottom-0;
+  }
+  .act-num {
+    @apply font-display text-[9rem] italic leading-none text-carmine-500 lg:text-[12rem];
+  }
+  .clapper {
+    @apply overflow-hidden rounded-2xl border border-ink-700 bg-ink-900 transition duration-300 hover:-translate-y-1;
+  }
+  .clapper-top {
+    @apply h-10 origin-left bg-cream-100 transition duration-300;
+    background-image: repeating-linear-gradient(-45deg, #0a0a0b 0 18px, #f2ebdd 18px 36px);
+  }
+  .clapper:hover .clapper-top {
+    transform: rotate(-4deg);
+  }
+
+  /* Autores: tarjetas que giran */
+  .flip-card {
+    @apply aspect-[4/5];
+    perspective: 1400px;
+  }
+  .flip-inner {
+    @apply relative block h-full w-full transition-transform duration-700;
+    transform-style: preserve-3d;
+  }
+  .flip-card[aria-pressed='true'] .flip-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-face {
+    @apply absolute inset-0 flex flex-col overflow-hidden rounded-2xl border border-ink-700;
+    backface-visibility: hidden;
+  }
+  .flip-back {
+    transform: rotateY(180deg);
+  }
+  .credits {
+    @apply relative h-[26rem] overflow-hidden rounded-3xl border border-ink-700 bg-ink-950 px-6;
+  }
+  .credits::before,
+  .credits::after {
+    content: '';
+    @apply absolute inset-x-0 z-10 h-16 bg-ink-950;
+  }
+  .credits::before {
+    @apply top-0;
+  }
+  .credits::after {
+    @apply bottom-0;
+  }
+  .credits-roll {
+    animation: credits 26s linear infinite;
+  }
+  .credits:hover .credits-roll {
+    animation-play-state: paused;
+  }
+
+  /* Membresía: barra deslizante */
+  .range {
+    @apply h-2 cursor-pointer appearance-none rounded-full bg-ink-700;
+    background-image: linear-gradient(#c8102e, #c8102e);
+    background-size: var(--fill, 30%) 100%;
+    background-repeat: no-repeat;
+  }
+  .range::-webkit-slider-thumb {
+    @apply h-6 w-6 appearance-none rounded-full border-4 border-carmine-500 bg-cream-50;
+  }
+  .range::-moz-range-thumb {
+    @apply h-5 w-5 rounded-full border-4 border-carmine-500 bg-cream-50;
+  }
+
+  /* Contacto: taquilla */
+  .box-office {
+    @apply overflow-hidden rounded-3xl bg-cream-100 text-ink-950;
+  }
+  .box-office-sign {
+    @apply flex items-center justify-between gap-4 bg-carmine-500 px-6 py-4 text-white sm:px-8;
+  }
+  .status-pill {
+    @apply inline-flex items-center gap-2 rounded-full bg-ink-950 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-cream-50;
+  }
+  .status-dot {
+    @apply h-2 w-2 animate-pulse rounded-full bg-[#3ddc84];
+  }
+  .status-pill.is-closed .status-dot {
+    @apply animate-none bg-carmine-400;
+  }
+  .quick-action {
+    @apply flex flex-col items-center gap-2 bg-cream-100 px-3 py-5 text-xs font-bold uppercase tracking-wider text-ink-950 transition hover:bg-ink-950 hover:text-cream-50;
+  }
+  .quick-action i {
+    @apply text-xl text-carmine-500;
+  }
+
   /* Boletos de experiencias */
   .stub {
     @apply relative flex min-h-[19rem] flex-col gap-2 rounded-2xl bg-cream-100 p-6 text-ink-950 transition duration-300 hover:-translate-y-1.5;
@@ -354,6 +508,26 @@
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+}
+
+@keyframes flap {
+  0% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  60% {
+    transform: rotateX(-12deg);
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes credits {
+  to {
+    transform: translateY(-50%);
   }
 }
 

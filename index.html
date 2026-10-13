@@ -217,7 +217,7 @@
         .map(
           ({ m, h }) => `
           <li>
-            <button type="button" class="group flex w-full items-center gap-4 py-3 text-left" data-buy="${m.id}" data-time="${h}">
+            <button type="button" class="group flex w-full items-center gap-4 py-3 text-left disabled:cursor-not-allowed disabled:line-through disabled:opacity-40" data-buy="${m.id}" data-time="${h}" ${Lumiere.isPast(h) ? 'disabled title="Función iniciada"' : ''}>
               <span class="w-14 font-mono text-sm font-bold">${h}</span>
               <span class="min-w-0 flex-1 truncate font-semibold uppercase tracking-wide">${esc(m.titulo)}</span>
               <span class="hidden text-xs text-ink-600 sm:inline">${esc(m.sala)}</span>

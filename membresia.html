@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Membresía | Lumière Ciné</title>
-  <meta name="description" content="Planes de membresía con beneficios exclusivos en Lumière Ciné.">
+  <meta name="description" content="Planes de membresía, calculadora de ahorro y beneficios en Lumière Ciné.">
   <meta name="theme-color" content="#0A0A0B">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
@@ -91,6 +91,78 @@
       <p class="container-site mt-8 text-xs text-muted">Precios en dólares. Puedes cancelar cuando quieras.</p>
     </section>
 
+    <!-- CALCULADORA DE AHORRO -->
+    <section class="border-t border-ink-700 py-20 sm:py-28" aria-labelledby="t-calc">
+      <div class="container-site grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+        <div class="reveal space-y-8">
+          <div class="space-y-4">
+            <p class="eyebrow">Calculadora</p>
+            <h2 id="t-calc" class="section-title">¿Cuánto ahorrarías?</h2>
+            <p class="section-lead">Mueve la barra según cuántas veces vas al cine al mes y te decimos qué plan te conviene.</p>
+          </div>
+          <div class="card space-y-8 p-8">
+            <div>
+              <div class="flex items-baseline justify-between">
+                <label for="visits" class="label">Funciones al mes</label>
+                <output id="visits-out" for="visits" class="font-display text-5xl text-cream-50">4</output>
+              </div>
+              <input id="visits" type="range" min="1" max="12" value="4" class="range mt-4 w-full">
+              <div class="mt-2 flex justify-between text-xs text-muted"><span>1</span><span>6</span><span>12</span></div>
+            </div>
+            <fieldset>
+              <legend class="label mb-3">¿En qué sala sueles ver?</legend>
+              <div class="inline-flex rounded-full border border-ink-600 p-1" role="group">
+                <button type="button" class="chip border-0" data-room="general" aria-pressed="true">Sala general</button>
+                <button type="button" class="chip border-0" data-room="vip" aria-pressed="false">Sala VIP</button>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="reveal card overflow-hidden" aria-live="polite">
+          <div class="bg-carmine-500 p-8 text-white">
+            <p class="text-xs font-bold uppercase tracking-[0.25em] text-white/80">Te conviene</p>
+            <p class="mt-2 font-display text-5xl" id="calc-best">Gold</p>
+            <p class="mt-2 text-white/90" id="calc-save">Ahorras $11.00 al mes</p>
+          </div>
+          <ul class="space-y-5 p-8" id="calc-bars"></ul>
+          <div class="border-t border-ink-700 p-8 pt-6">
+            <button type="button" class="btn-primary w-full" id="calc-cta" data-member="gold" data-period="mensual">Elegir este plan <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARATIVA -->
+    <section class="border-t border-ink-700 bg-ink-900 py-20 sm:py-28" aria-labelledby="t-comp">
+      <div class="container-site">
+        <div class="reveal space-y-4">
+          <p class="eyebrow">Comparativa</p>
+          <h2 id="t-comp" class="section-title">Todo, lado a lado</h2>
+        </div>
+        <div class="reveal mt-12 overflow-x-auto rounded-3xl border border-ink-700">
+          <table class="w-full min-w-[40rem] text-left text-sm">
+            <thead class="bg-ink-950 text-xs uppercase tracking-[0.2em] text-muted">
+              <tr><th scope="col" class="p-5 font-semibold">Beneficio</th><th scope="col" class="p-5 text-center font-semibold">Clásica</th><th scope="col" class="bg-carmine-500 p-5 text-center font-semibold text-white">Gold</th><th scope="col" class="p-5 text-center font-semibold">VIP</th></tr>
+            </thead>
+            <tbody class="divide-y divide-ink-700 text-cream-300">
+              <tr><th scope="row" class="p-5 font-medium text-cream-50">Entradas incluidas al mes</th><td class="p-5 text-center">2 generales</td><td class="bg-ink-850 p-5 text-center">4 preferentes</td><td class="p-5 text-center">Ilimitadas VIP</td></tr>
+              <tr><th scope="row" class="p-5 font-medium text-cream-50">Descuento en dulcería</th><td class="p-5 text-center">10%</td><td class="bg-ink-850 p-5 text-center">20%</td><td class="p-5 text-center">Cena gourmet</td></tr>
+              <tr><th scope="row" class="p-5 font-medium text-cream-50">Combo de palomitas</th><td class="p-5 text-center text-muted">—</td><td class="bg-ink-850 p-5 text-center"><i class="fa-solid fa-check text-carmine-400" aria-label="Incluido"></i></td><td class="p-5 text-center"><i class="fa-solid fa-check text-gold-400" aria-label="Incluido"></i></td></tr>
+              <tr><th scope="row" class="p-5 font-medium text-cream-50">Preventa anticipada</th><td class="p-5 text-center text-muted">—</td><td class="bg-ink-850 p-5 text-center">48 horas</td><td class="p-5 text-center">48 horas</td></tr>
+              <tr><th scope="row" class="p-5 font-medium text-cream-50">Funciones privadas</th><td class="p-5 text-center text-muted">—</td><td class="bg-ink-850 p-5 text-center text-muted">—</td><td class="p-5 text-center"><i class="fa-solid fa-check text-gold-400" aria-label="Incluido"></i></td></tr>
+              <tr><th scope="row" class="p-5 font-medium text-cream-50">Le Bar de Nuit</th><td class="p-5 text-center text-muted">—</td><td class="bg-ink-850 p-5 text-center text-muted">—</td><td class="p-5 text-center"><i class="fa-solid fa-check text-gold-400" aria-label="Incluido"></i></td></tr>
+              <tr><th scope="row" class="p-5 font-medium text-cream-50">Gaceta mensual</th><td class="p-5 text-center"><i class="fa-solid fa-check text-carmine-400" aria-label="Incluido"></i></td><td class="bg-ink-850 p-5 text-center"><i class="fa-solid fa-check text-carmine-400" aria-label="Incluido"></i></td><td class="p-5 text-center"><i class="fa-solid fa-check text-gold-400" aria-label="Incluido"></i></td></tr>
+              <tr class="bg-ink-950"><td class="p-5"></td>
+                <td class="p-5 text-center"><button type="button" class="btn-ghost btn-sm" data-member="clasica" data-period="mensual">Elegir</button></td>
+                <td class="bg-ink-850 p-5 text-center"><button type="button" class="btn-primary btn-sm" data-member="gold" data-period="mensual">Elegir</button></td>
+                <td class="p-5 text-center"><button type="button" class="btn-ghost btn-sm" data-member="vip" data-period="mensual">Elegir</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
     <section class="border-t border-ink-700 bg-ink-900 py-20 sm:py-28" aria-labelledby="t-como">
       <div class="container-site">
         <div class="reveal space-y-4">
@@ -111,7 +183,51 @@
   </main>
   <script>
     document.addEventListener('lumiere:ready', () => {
-      const buttons = document.querySelectorAll('[data-period]');
+
+      // Calculadora de ahorro
+      const { planes, precios } = window.LUMIERE;
+      const slider = document.getElementById('visits');
+      let room = 'general';
+      const calc = () => {
+        const v = Number(slider.value);
+        const price = room === 'vip' ? precios['Sala VIP'] : precios['Sala 1'];
+        const extra = (included) => (room === 'vip' ? v * price : Math.max(0, v - included) * price);
+        const options = [
+          { id: null, name: 'Sin membresía', cost: v * price },
+          { id: 'clasica', name: planes.clasica.nombre, cost: planes.clasica.precio + extra(2) },
+          { id: 'gold', name: planes.gold.nombre, cost: planes.gold.precio + extra(4) },
+          { id: 'vip', name: planes.vip.nombre, cost: planes.vip.precio },
+        ];
+        const best = options.reduce((a, b) => (b.cost < a.cost ? b : a));
+        const max = Math.max(...options.map((o) => o.cost));
+        document.getElementById('visits-out').textContent = v;
+        document.getElementById('calc-best').textContent = best.id ? 'Plan ' + best.name : 'Pagar por función';
+        document.getElementById('calc-save').textContent = best.id
+          ? `Ahorras ${Lumiere.money(options[0].cost - best.cost)} al mes`
+          : 'Con tan pocas funciones aún no te conviene una membresía';
+        const cta = document.getElementById('calc-cta');
+        cta.hidden = !best.id;
+        if (best.id) cta.dataset.member = best.id;
+        document.getElementById('calc-bars').innerHTML = options
+          .map(
+            (o) => `<li>
+              <div class="mb-2 flex justify-between text-sm"><span class="${o === best ? 'font-semibold text-cream-50' : 'text-cream-300'}">${o.name}</span><span class="font-semibold text-cream-50">${Lumiere.money(o.cost)}</span></div>
+              <div class="h-2 overflow-hidden rounded-full bg-ink-700"><div class="h-full rounded-full transition-all duration-500 ${o === best ? 'bg-carmine-500' : 'bg-ink-600'}" style="width:${(o.cost / max) * 100}%"></div></div>
+            </li>`
+          )
+          .join('');
+        slider.style.setProperty('--fill', ((v - 1) / 11) * 100 + '%');
+      };
+      slider.addEventListener('input', calc);
+      document.querySelectorAll('[data-room]').forEach((b) =>
+        b.addEventListener('click', () => {
+          room = b.dataset.room;
+          document.querySelectorAll('[data-room]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+          calc();
+        })
+      );
+      calc();
+      const buttons = document.querySelectorAll('[data-period]:not([data-member])');
       buttons.forEach((btn) =>
         btn.addEventListener('click', () => {
           const anual = btn.dataset.period === 'anual';

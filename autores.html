@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Autores | Lumière Ciné</title>
-  <meta name="description" content="El equipo detrás de Lumière Ciné.">
+  <meta name="description" content="El reparto detrás de Lumière Ciné.">
   <meta name="theme-color" content="#0A0A0B">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
@@ -22,77 +22,94 @@
   <div data-component="header"></div>
 
   <main id="contenido" class="pt-20">
-    <header class="py-16 sm:py-24">
-      <div class="container-site space-y-5">
-        <p class="eyebrow animate-rise">El equipo</p>
-        <h1 class="font-display text-5xl leading-none text-cream-50 animate-rise sm:text-7xl">Nuestros <span class="italic text-carmine-500">autores</span></h1>
-        <p class="section-lead animate-rise">Conoce a las personas detrás de Lumière Ciné, quienes hacen posible esta experiencia cinematográfica.</p>
+    <!-- CABECERA ESTILO PÓSTER -->
+    <header class="border-b border-ink-700 py-16 sm:py-24">
+      <div class="container-site text-center">
+        <p class="font-mono text-xs uppercase tracking-[0.5em] text-gold-400 animate-rise">Un proyecto de seis personas</p>
+        <h1 class="mx-auto mt-6 max-w-4xl font-display text-[clamp(3rem,9vw,7rem)] leading-[0.92] text-cream-50 animate-rise [animation-delay:120ms]">El <span class="italic text-carmine-500">reparto</span></h1>
+        <p class="mx-auto mt-6 max-w-xl text-lg text-cream-300 animate-rise [animation-delay:240ms]">Conoce a quienes hacen posible Lumière Ciné. Toca cada tarjeta para leer su papel en esta historia.</p>
       </div>
     </header>
 
-    <section class="pb-24 sm:pb-32" aria-label="Integrantes del equipo">
+    <section class="py-20 sm:py-28" aria-label="Integrantes del equipo">
       <div class="container-site">
-        <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <li class="reveal group card overflow-hidden">
-            <img src="assets/img/equipo/jessica-vargas.webp" alt="Jessica Vargas" loading="lazy" class="aspect-square w-full object-cover grayscale transition duration-500 group-hover:grayscale-0">
-            <div class="space-y-2 p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-carmine-400">Desarrolladora frontend</p>
-              <h2 class="font-display text-2xl text-cream-50">Jessica Vargas</h2>
-              <p class="text-sm leading-relaxed text-muted">Encargada de la estructura visual y el diseño del sitio web.</p>
-            </div>
-          </li>
-          <li class="reveal group card overflow-hidden" style="transition-delay:80ms">
-            <img src="assets/img/equipo/carlos-castro.webp" alt="Carlos Castro" loading="lazy" class="aspect-square w-full object-cover grayscale transition duration-500 group-hover:grayscale-0">
-            <div class="space-y-2 p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-carmine-400">Diseñador UI/UX</p>
-              <h2 class="font-display text-2xl text-cream-50">Carlos Castro</h2>
-              <p class="text-sm leading-relaxed text-muted">Responsable de la experiencia de usuario y el diseño visual.</p>
-            </div>
-          </li>
-          <li class="reveal group card overflow-hidden" style="transition-delay:160ms">
-            <img src="assets/img/equipo/manuel-castillo.webp" alt="Manuel Castillo" loading="lazy" class="aspect-square w-full object-cover grayscale transition duration-500 group-hover:grayscale-0">
-            <div class="space-y-2 p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-carmine-400">Backend</p>
-              <h2 class="font-display text-2xl text-cream-50">Manuel Castillo</h2>
-              <p class="text-sm leading-relaxed text-muted">Gestiona la lógica y el funcionamiento interno del sistema.</p>
-            </div>
-          </li>
-          <li class="reveal group card overflow-hidden">
-            <img src="assets/img/equipo/beatriz-solis.webp" alt="Beatriz Solis" loading="lazy" class="aspect-square w-full object-cover grayscale transition duration-500 group-hover:grayscale-0">
-            <div class="space-y-2 p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-carmine-400">Gestora de contenido</p>
-              <h2 class="font-display text-2xl text-cream-50">Beatriz Solis</h2>
-              <p class="text-sm leading-relaxed text-muted">Actualiza la cartelera y el contenido del sitio.</p>
-            </div>
-          </li>
-          <li class="reveal group card overflow-hidden" style="transition-delay:80ms">
-            <img src="assets/img/equipo/marcos-duarte.webp" alt="Marcos Duarte" loading="lazy" class="aspect-square w-full object-cover grayscale transition duration-500 group-hover:grayscale-0">
-            <div class="space-y-2 p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-carmine-400">Tester</p>
-              <h2 class="font-display text-2xl text-cream-50">Marcos Duarte</h2>
-              <p class="text-sm leading-relaxed text-muted">Verifica el correcto funcionamiento del sitio web.</p>
-            </div>
-          </li>
-          <li class="reveal group card overflow-hidden" style="transition-delay:160ms">
-            <img src="assets/img/equipo/claudia-navarro.webp" alt="Claudia Navarro" loading="lazy" class="aspect-square w-full object-cover grayscale transition duration-500 group-hover:grayscale-0">
-            <div class="space-y-2 p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-carmine-400">Project manager</p>
-              <h2 class="font-display text-2xl text-cream-50">Claudia Navarro</h2>
-              <p class="text-sm leading-relaxed text-muted">Coordina y supervisa el desarrollo del proyecto.</p>
-            </div>
-          </li>
-        </ul>
+        <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="cast"></ul>
+      </div>
+    </section>
 
-        <div class="reveal mt-16 flex flex-col items-start justify-between gap-6 rounded-3xl border border-ink-700 bg-ink-900 p-10 sm:flex-row sm:items-center">
-          <div class="space-y-2">
-            <h2 class="font-display text-3xl text-cream-50">¿Quieres crear con nosotros?</h2>
-            <p class="text-muted">Fotógrafos, bloggers, marcas e influencers: tenemos un lugar para tu propuesta.</p>
-          </div>
-          <a href="contacto.html#colaborar" class="btn-primary shrink-0">Enviar propuesta <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <!-- CRÉDITOS FINALES -->
+    <section class="border-t border-ink-700 bg-ink-950 py-20 sm:py-28" aria-labelledby="t-creditos">
+      <div class="container-site grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+        <div class="reveal space-y-5">
+          <p class="eyebrow">Créditos finales</p>
+          <h2 id="t-creditos" class="section-title">Nadie se va hasta que terminan los créditos</h2>
+          <p class="section-lead">Así se vería el equipo al final de la película. Pasa el mouse encima para detenerlos.</p>
+          <a href="contacto.html#colaborar" class="btn-primary">Quiero aparecer aquí <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="credits reveal" aria-hidden="true">
+          <div class="credits-roll" id="credits-roll"></div>
         </div>
       </div>
     </section>
   </main>
+  <script>
+    document.addEventListener('lumiere:ready', () => {
+      const team = [
+        { name: 'Jessica Vargas', role: 'Desarrolladora frontend', as: 'La arquitecta visual', img: 'jessica-vargas', bio: 'Encargada de la estructura visual y el diseño del sitio web.', credit: 'Desarrollo frontend' },
+        { name: 'Carlos Castro', role: 'Diseñador UI/UX', as: 'El narrador de pantallas', img: 'carlos-castro', bio: 'Responsable de la experiencia de usuario y el diseño visual.', credit: 'Diseño de experiencia' },
+        { name: 'Manuel Castillo', role: 'Backend', as: 'El proyeccionista', img: 'manuel-castillo', bio: 'Gestiona la lógica y el funcionamiento interno del sistema.', credit: 'Desarrollo backend' },
+        { name: 'Beatriz Solis', role: 'Gestora de contenido', as: 'La programadora de cartelera', img: 'beatriz-solis', bio: 'Actualiza la cartelera y el contenido del sitio.', credit: 'Contenido y cartelera' },
+        { name: 'Marcos Duarte', role: 'Tester', as: 'El crítico de primera fila', img: 'marcos-duarte', bio: 'Verifica el correcto funcionamiento del sitio web.', credit: 'Control de calidad' },
+        { name: 'Claudia Navarro', role: 'Project manager', as: 'La directora', img: 'claudia-navarro', bio: 'Coordina y supervisa el desarrollo del proyecto.', credit: 'Dirección del proyecto' },
+      ];
+      const esc = Lumiere.escapeHTML;
+
+      document.getElementById('cast').innerHTML = team
+        .map(
+          (p, i) => `
+          <li class="reveal" style="transition-delay:${(i % 3) * 80}ms">
+            <button type="button" class="flip-card group block w-full text-left" data-flip aria-pressed="false" aria-label="${esc(p.name)}, ${esc(p.role)}. Ver su papel">
+              <span class="flip-inner">
+                <span class="flip-face">
+                  <img src="assets/img/equipo/${p.img}.webp" alt="" loading="lazy" class="h-full w-full object-cover grayscale transition duration-500 group-hover:grayscale-0">
+                  <span class="absolute inset-x-0 bottom-0 bg-ink-950 p-6">
+                    <span class="block font-mono text-[11px] uppercase tracking-[0.25em] text-gold-400">${esc(p.name)} es</span>
+                    <span class="mt-1 block font-display text-3xl leading-tight text-cream-50">${esc(p.as)}</span>
+                  </span>
+                  <span class="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-cream-100 text-ink-950"><i class="fa-solid fa-rotate" aria-hidden="true"></i></span>
+                </span>
+                <span class="flip-face flip-back bg-carmine-500 p-8 text-white">
+                  <span class="font-mono text-xs uppercase tracking-[0.3em] text-white/70">0${i + 1} · Reparto</span>
+                  <span class="mt-auto block font-display text-4xl leading-tight">${esc(p.name)}</span>
+                  <span class="mt-2 block text-sm font-semibold uppercase tracking-[0.2em] text-white/80">${esc(p.role)}</span>
+                  <span class="mt-6 block border-t border-white/30 pt-6 text-lg leading-relaxed">${esc(p.bio)}</span>
+                  <span class="mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Volver</span>
+                </span>
+              </span>
+            </button>
+          </li>`
+        )
+        .join('');
+
+      document.getElementById('cast').addEventListener('click', (e) => {
+        const card = e.target.closest('[data-flip]');
+        if (!card) return;
+        const on = card.getAttribute('aria-pressed') !== 'true';
+        card.setAttribute('aria-pressed', String(on));
+      });
+
+      const credits = team
+        .map((p) => `<div class="grid grid-cols-2 gap-6 py-2"><span class="text-right text-sm uppercase tracking-[0.2em] text-muted">${esc(p.credit)}</span><span class="font-display text-xl text-cream-50">${esc(p.name)}</span></div>`)
+        .join('');
+      const block = `
+        <p class="py-6 text-center font-display text-4xl italic text-cream-50">Lumière ciné</p>
+        ${credits}
+        <p class="pt-10 text-center text-xs uppercase tracking-[0.3em] text-muted">Con la participación especial de</p>
+        <p class="pb-10 text-center font-display text-2xl text-carmine-400">Nuestro público</p>`;
+      document.getElementById('credits-roll').innerHTML = block + block;
+      Lumiere.initReveal();
+    });
+  </script>
 
   <div data-component="footer"></div>
 </body>

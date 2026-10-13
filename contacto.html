@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contacto | Lumière Ciné</title>
-  <meta name="description" content="Contáctanos, reserva tu experiencia o colabora con Lumière Ciné.">
+  <meta name="description" content="Taquilla, reservas y colaboraciones de Lumière Ciné.">
   <meta name="theme-color" content="#0A0A0B">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
@@ -23,11 +23,35 @@
   <div data-component="header"></div>
 
   <main id="contenido" class="pt-20">
-    <header class="py-16 sm:py-24">
-      <div class="container-site space-y-5">
-        <p class="eyebrow animate-rise">Planifica tu visita</p>
-        <h1 class="font-display text-5xl leading-none text-cream-50 animate-rise sm:text-7xl">Contacto</h1>
-        <p class="section-lead animate-rise">Estamos aquí para ayudarte a crear la experiencia cinematográfica perfecta. Escríbenos, reserva o colabora con nosotros.</p>
+    <header class="py-14 sm:py-20">
+      <div class="container-site grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-center">
+        <div class="space-y-5">
+          <p class="eyebrow animate-rise">Planifica tu visita</p>
+          <h1 class="font-display text-5xl leading-none text-cream-50 animate-rise sm:text-7xl">Pasa por la <span class="italic text-carmine-500">taquilla</span></h1>
+          <p class="section-lead animate-rise">Escríbenos, reserva una experiencia o propón una colaboración. Estamos para ayudarte a crear la función perfecta.</p>
+        </div>
+
+        <!-- Ventanilla de taquilla -->
+        <div class="box-office animate-rise [animation-delay:200ms]">
+          <div class="box-office-sign">
+            <span class="font-display text-2xl italic">Taquilla</span>
+            <span class="status-pill" data-status><span class="status-dot"></span><span data-status-text>Abierto ahora</span></span>
+          </div>
+          <div class="grid gap-6 p-6 sm:grid-cols-[1fr_auto] sm:items-center sm:p-8">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.2em] text-ink-600">Horario</p>
+              <p class="font-display text-3xl text-ink-950">14:00 a 00:00</p>
+              <p class="mt-1 text-sm text-ink-600" data-status-detail>Todos los días</p>
+            </div>
+            <p class="font-mono text-4xl font-bold tracking-wider text-ink-950" data-box-clock>--:--</p>
+          </div>
+          <div class="grid grid-cols-2 gap-px bg-cream-300 sm:grid-cols-4">
+            <a href="tel:+50321000000" class="quick-action"><i class="fa-solid fa-phone" aria-hidden="true"></i>Llamar</a>
+            <a href="https://wa.me/50321000000" target="_blank" rel="noopener noreferrer" class="quick-action"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>WhatsApp</a>
+            <a href="mailto:contacto@lumierecine.sv" class="quick-action"><i class="fa-solid fa-envelope" aria-hidden="true"></i>Correo</a>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=San+Salvador,+El+Salvador" target="_blank" rel="noopener noreferrer" class="quick-action"><i class="fa-solid fa-route" aria-hidden="true"></i>Cómo llegar</a>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -261,6 +285,26 @@
       </div>
     </section>
   </main>
+  <script>
+    document.addEventListener('lumiere:ready', () => {
+      const zone = { timeZone: 'America/El_Salvador', hour12: false };
+      const pill = document.querySelector('[data-status]');
+      const tick = () => {
+        const now = new Intl.DateTimeFormat('en-GB', { ...zone, hour: '2-digit', minute: '2-digit' }).format(new Date());
+        document.querySelector('[data-box-clock]').textContent = now;
+        const [h, m] = now.split(':').map(Number);
+        const open = h >= 14;
+        pill.classList.toggle('is-closed', !open);
+        document.querySelector('[data-status-text]').textContent = open ? 'Abierto ahora' : 'Cerrado';
+        const left = open ? 24 * 60 - (h * 60 + m) : 14 * 60 - (h * 60 + m);
+        const hh = Math.floor(left / 60), mm = left % 60;
+        document.querySelector('[data-status-detail]').textContent =
+          (open ? 'Cierra en ' : 'Abre en ') + (hh ? hh + ' h ' : '') + mm + ' min · Hora de San Salvador';
+      };
+      tick();
+      setInterval(tick, 20000);
+    });
+  </script>
 
   <div data-component="footer"></div>
 </body>

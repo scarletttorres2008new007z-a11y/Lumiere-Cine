@@ -33,10 +33,23 @@
   const findMovie = (id) => [...DATA.cartelera, ...DATA.proximos].find((m) => m.id === id);
   const trailerURL = (movie) => `https://www.youtube.com/results?search_query=${encodeURIComponent(movie.titulo + ' tráiler oficial español')}`;
   const ticketCode = () => 'LC-' + Math.random().toString(36).slice(2, 8).toUpperCase();
-  const todayLabel = () => {
-    const t = new Intl.DateTimeFormat('es-SV', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date());
+  // Fecha elegida para comprar (por defecto hoy). La página de cartelera la cambia.
+  const startOfDay = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  let buyDate = startOfDay(new Date());
+  const isSameDay = (a, b) => a.toDateString() === b.toDateString();
+  const dateLabel = (d = buyDate) => {
+    const t = isSameDay(d, new Date())
+      ? 'Hoy, ' + new Intl.DateTimeFormat('es-SV', { day: 'numeric', month: 'long' }).format(d)
+      : new Intl.DateTimeFormat('es-SV', { weekday: 'long', day: 'numeric', month: 'long' }).format(d);
     return t.charAt(0).toUpperCase() + t.slice(1);
   };
+  const todayLabel = () => dateLabel();
+
+  // Hora actual en San Salvador, en formato HH:MM
+  const nowHHMM = () =>
+    new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'America/El_Salvador' }).format(new Date());
+  // Una función ya empezó si es hoy y su hora pasó
+  const isPast = (time, d = buyDate) => isSameDay(d, new Date()) && time <= nowHHMM();
 
   const logo = `
     <a href="index.html" class="group inline-flex items-baseline gap-1.5" aria-label="Lumière Ciné, ir al inicio">
@@ -317,15 +330,20 @@
   const buy = { movie: null, time: null, qty: 2, seats: [], name: '', email: '' };
 
   // Asientos ocupados "aleatorios" pero estables para cada función
-  function occupiedSeats(movieId, time) {
-    let seed = [...(movieId + time)].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
+  function occupiedSeats(movieId, time, d = buyDate) {
+    let seed = [...(movieId + time + d.toDateString())].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
     const rand = () => ((seed = (seed * 1103515245 + 12345) >>> 0) / 4294967296);
+    // Las funciones nocturnas y del fin de semana se llenan más
+    const late = Number(time.slice(0, 2)) >= 19 ? 0.25 : 0;
+    const weekend = [0, 5, 6].includes(d.getDay()) ? 0.15 : 0;
+    const rate = Math.min(0.92, 0.15 + rand() * 0.45 + late + weekend);
     const set = new Set();
     ROWS.forEach((r) => {
-      for (let c = 1; c <= COLS; c++) if (rand() < 0.28) set.add(r + c);
+      for (let c = 1; c <= COLS; c++) if (rand() < rate) set.add(r + c);
     });
     return set;
   }
+  const TOTAL_SEATS = ROWS.length * COLS;
 
   const steps = ['Función', 'Asientos', 'Datos', 'Boleto'];
   const stepper = (n) => `
@@ -374,10 +392,18 @@
       <div class="space-y-7 p-6">
         <fieldset>
           <legend class="label mb-3">Elige el horario</legend>
+          ${
+            m.horarios.every((h) => isPast(h))
+              ? `<p class="mb-3 rounded-xl border border-ink-700 bg-ink-850 p-4 text-sm text-cream-300">Las funciones de hoy ya comenzaron. <a href="cartelera.html" class="font-semibold text-carmine-400 underline">Elige otro día en la cartelera</a>.</p>`
+              : ''
+          }
           <div class="grid grid-cols-3 gap-2">
             ${m.horarios
               .map(
-                (h) => `<button type="button" class="chip justify-center py-3 text-sm" data-pick-time="${h}" aria-pressed="${h === buy.time}">${h}</button>`
+                (h) =>
+                  isPast(h)
+                    ? `<span class="chip cursor-not-allowed justify-center py-3 text-sm line-through opacity-40" title="Función iniciada">${h}</span>`
+                    : `<button type="button" class="chip justify-center py-3 text-sm" data-pick-time="${h}" aria-pressed="${h === buy.time}">${h}</button>`
               )
               .join('')}
           </div>
@@ -503,6 +529,7 @@
   }
 
   function startBuy(movie, time) {
+    if (time && isPast(time)) time = null;
     Object.assign(buy, { movie, time: time || null, qty: buy.movie === movie ? buy.qty : 2, seats: [] });
     buyStep1();
   }
@@ -887,7 +914,24 @@
   /* ------------------------------------------------------------------------
      Arranque
      ------------------------------------------------------------------------ */
-  window.Lumiere = { toast, initReveal, escapeHTML: esc, isEmail, openModal, openMembership, startBuy };
+  window.Lumiere = {
+    toast,
+    initReveal,
+    escapeHTML: esc,
+    isEmail,
+    money,
+    priceFor,
+    openModal,
+    openDetail: (id) => openDetail(findMovie(id)),
+    openMembership,
+    startBuy,
+    occupiedSeats,
+    TOTAL_SEATS,
+    isPast,
+    dateLabel,
+    getDate: () => buyDate,
+    setDate: (d) => (buyDate = startOfDay(d)),
+  };
 
   document.addEventListener('DOMContentLoaded', () => {
     initCurtain();

@@ -74,13 +74,13 @@ window.LUMIERE = {
   ],
 
   galeria: [
-    { src: 'assets/img/galeria/galeria-1.webp', titulo: 'La Grande Scène', texto: 'Donde la luz cobra vida', alt: 'Fachada del cine Lumière Ciné', forma: 'tall' },
-    { src: 'assets/img/galeria/galeria-2.webp', titulo: 'Le Grand Théâtre', texto: 'Palcos dorados y la magia de lo clásico', alt: 'Gran sala clásica con palcos dorados', forma: 'wide' },
-    { src: 'assets/img/galeria/galeria-3.webp', titulo: 'Immersion Totale', texto: 'Confort y arte', alt: 'Butaca VIP de terciopelo rojo', forma: 'square' },
-    { src: 'assets/img/galeria/galeria-4.webp', titulo: 'Les Couloirs du Temps', texto: 'Un recorrido por la elegancia clásica', alt: 'Pasillo con cortinas rojas y alfombra art déco', forma: 'square' },
-    { src: 'assets/img/galeria/galeria-5.webp', titulo: "Culte d'Hier et d'Aujourd'hui", texto: 'Un lugar donde las obras maestras nunca mueren', alt: 'Placa con próximas funciones clásicas', forma: 'tall' },
-    { src: 'assets/img/galeria/galeria-6.webp', titulo: "L'Âme du Cinéma", texto: 'El arte de proyectar sueños', alt: 'Proyector clásico', forma: 'tall' },
-    { src: 'assets/img/galeria/galeria-7.webp', titulo: 'Goût Élevé', texto: 'Un placer clásico y redefinido', alt: 'Copa de vino y palomitas Lumière', forma: 'tall' },
-    { src: 'assets/img/galeria/galeria-8.webp', titulo: 'Le Bar de Nuit', texto: 'Un brindis antes y después de la función', alt: 'Barra del bar nocturno', forma: 'square' },
+    { src: 'assets/img/galeria/galeria-1.webp', categoria: 'Arquitectura', titulo: 'La Grande Scène', texto: 'Donde la luz cobra vida', alt: 'Fachada del cine Lumière Ciné', forma: 'tall' },
+    { src: 'assets/img/galeria/galeria-2.webp', categoria: 'Salas', titulo: 'Le Grand Théâtre', texto: 'Palcos dorados y la magia de lo clásico', alt: 'Gran sala clásica con palcos dorados', forma: 'wide' },
+    { src: 'assets/img/galeria/galeria-3.webp', categoria: 'Salas', titulo: 'Immersion Totale', texto: 'Confort y arte', alt: 'Butaca VIP de terciopelo rojo', forma: 'square' },
+    { src: 'assets/img/galeria/galeria-4.webp', categoria: 'Arquitectura', titulo: 'Les Couloirs du Temps', texto: 'Un recorrido por la elegancia clásica', alt: 'Pasillo con cortinas rojas y alfombra art déco', forma: 'square' },
+    { src: 'assets/img/galeria/galeria-5.webp', categoria: 'Detalles', titulo: "Culte d'Hier et d'Aujourd'hui", texto: 'Un lugar donde las obras maestras nunca mueren', alt: 'Placa con próximas funciones clásicas', forma: 'tall' },
+    { src: 'assets/img/galeria/galeria-6.webp', categoria: 'Detalles', titulo: "L'Âme du Cinéma", texto: 'El arte de proyectar sueños', alt: 'Proyector clásico', forma: 'tall' },
+    { src: 'assets/img/galeria/galeria-7.webp', categoria: 'Bar', titulo: 'Goût Élevé', texto: 'Un placer clásico y redefinido', alt: 'Copa de vino y palomitas Lumière', forma: 'tall' },
+    { src: 'assets/img/galeria/galeria-8.webp', categoria: 'Bar', titulo: 'Le Bar de Nuit', texto: 'Un brindis antes y después de la función', alt: 'Barra del bar nocturno', forma: 'square' },
   ],
 };

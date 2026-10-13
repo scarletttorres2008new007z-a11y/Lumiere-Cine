@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cartelera | Lumière Ciné</title>
-  <meta name="description" content="Todas las películas en cartelera y horarios de hoy en Lumière Ciné.">
+  <meta name="description" content="Funciones de la semana con disponibilidad en vivo en Lumière Ciné.">
   <meta name="theme-color" content="#0A0A0B">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
@@ -23,37 +23,79 @@
   <div data-component="header"></div>
 
   <main id="contenido" class="pt-20">
-    <header class="border-b border-ink-700 py-16 sm:py-24">
-      <div class="container-site space-y-5">
-        <p class="eyebrow animate-rise">Cartelera</p>
-        <h1 class="font-display text-5xl leading-none text-cream-50 animate-rise sm:text-7xl">Todas las películas <span class="italic text-carmine-500">en cartelera</span></h1>
-        <p class="section-lead animate-rise">Elige un horario y reserva tus entradas en segundos. Pagas al llegar a taquilla.</p>
+    <!-- CABECERA CON SELECTOR DE DÍAS -->
+    <header class="relative overflow-hidden border-b border-ink-700 pb-10 pt-16 sm:pt-20">
+      <span class="pointer-events-none absolute -right-8 top-6 select-none font-display text-[22vw] italic leading-none text-ink-900 lg:text-[16rem]" aria-hidden="true">Cartelera</span>
+      <div class="container-site relative">
+        <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div class="space-y-5">
+            <p class="eyebrow animate-rise">Cartelera semanal</p>
+            <h1 class="font-display text-5xl leading-none text-cream-50 animate-rise sm:text-7xl">¿Qué vemos <span class="italic text-carmine-500">esta semana?</span></h1>
+            <p class="section-lead animate-rise">Elige el día, mira la disponibilidad de cada función en vivo y aparta tus butacas.</p>
+          </div>
+          <div class="flex gap-6 animate-rise">
+            <div><p class="font-display text-4xl text-cream-50" data-stat="films">3</p><p class="text-xs uppercase tracking-wider text-muted">Películas</p></div>
+            <div><p class="font-display text-4xl text-cream-50" data-stat="shows">9</p><p class="text-xs uppercase tracking-wider text-muted">Funciones al día</p></div>
+            <div><p class="font-display text-4xl text-cream-50">3</p><p class="text-xs uppercase tracking-wider text-muted">Salas</p></div>
+          </div>
+        </div>
+
+        <div class="no-scrollbar -mx-5 mt-12 flex gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:px-0" id="day-picker" role="radiogroup" aria-label="Elige el día"></div>
       </div>
     </header>
 
-    <section class="py-14 sm:py-20" aria-label="Películas en cartelera">
+    <section class="py-12 sm:py-16" aria-label="Funciones">
       <div class="container-site">
-        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div class="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 md:mx-0 md:px-0" id="genre-filters" role="group" aria-label="Filtrar por género"></div>
-          <div class="relative md:w-72">
+        <!-- Barra de herramientas -->
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div class="flex flex-wrap items-center gap-4">
+            <div class="inline-flex rounded-full border border-ink-600 p-1" role="group" aria-label="Vista">
+              <button type="button" class="chip border-0" data-view="board" aria-pressed="true"><i class="fa-solid fa-table-list mr-2" aria-hidden="true"></i>Programa</button>
+              <button type="button" class="chip border-0" data-view="posters" aria-pressed="false"><i class="fa-solid fa-table-cells-large mr-2" aria-hidden="true"></i>Pósters</button>
+            </div>
+            <div class="no-scrollbar flex gap-2 overflow-x-auto" id="genre-filters" role="group" aria-label="Filtrar por género"></div>
+          </div>
+          <div class="relative lg:w-72">
             <label for="movie-search" class="sr-only">Buscar película</label>
             <i class="fa-solid fa-magnifying-glass pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm text-muted" aria-hidden="true"></i>
             <input id="movie-search" type="search" placeholder="Buscar película" class="input rounded-full pl-11">
           </div>
         </div>
 
-        <div class="mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-movies="cartelera" id="movie-grid"></div>
-        <p id="movie-empty" class="mt-12 rounded-2xl border border-dashed border-ink-600 p-10 text-center text-muted" hidden>
+        <!-- Vista: tablero de funciones -->
+        <div id="board-view" class="mt-10">
+          <div class="overflow-hidden rounded-3xl border border-ink-700 bg-ink-900">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-ink-700 bg-ink-950 px-6 py-4">
+              <p class="flex items-center gap-3 font-mono text-xs font-bold uppercase tracking-[0.3em] text-gold-400"><span class="h-2 w-2 animate-pulse rounded-full bg-gold-400"></span>Funciones · <span data-board-date></span></p>
+              <p class="font-mono text-xs uppercase tracking-[0.2em] text-muted">Hora local <span data-clock class="text-cream-50"></span></p>
+            </div>
+            <div class="hidden grid-cols-[6rem_1fr_7rem_12rem_9rem] gap-4 border-b border-ink-700 px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted md:grid">
+              <span>Hora</span><span>Película</span><span>Sala</span><span>Disponibilidad</span><span class="text-right">Entradas</span>
+            </div>
+            <ul id="board" class="divide-y divide-ink-700"></ul>
+          </div>
+        </div>
+
+        <!-- Vista: pósters -->
+        <div id="poster-view" class="mt-12" hidden>
+          <div class="grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-movies="cartelera" id="movie-grid"></div>
+        </div>
+
+        <p id="movie-empty" class="mt-10 rounded-2xl border border-dashed border-ink-600 p-10 text-center text-muted" hidden>
           No encontramos películas con ese criterio.
         </p>
       </div>
     </section>
 
+    <!-- PRÓXIMOS -->
     <section class="border-t border-ink-700 bg-ink-900 py-20 sm:py-28" aria-labelledby="t-proximos">
       <div class="container-site">
-        <div class="reveal space-y-4">
-          <p class="eyebrow">Muy pronto</p>
-          <h2 id="t-proximos" class="section-title">Próximos estrenos</h2>
+        <div class="reveal flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div class="space-y-4">
+            <p class="eyebrow">Muy pronto</p>
+            <h2 id="t-proximos" class="section-title">Próximos estrenos</h2>
+          </div>
+          <p class="max-w-sm text-sm text-muted">Activa el aviso y te escribimos en cuanto abra la preventa.</p>
         </div>
         <div class="mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-movies="proximos"></div>
       </div>

@@ -23,20 +23,43 @@
   <div data-component="header"></div>
 
   <main id="contenido" class="pt-20">
-    <header class="py-16 sm:py-24">
+    <header class="pb-10 pt-16 sm:pt-20">
       <div class="container-site grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
         <div class="space-y-5">
           <p class="eyebrow animate-rise">Galería</p>
-          <h1 class="font-display text-5xl leading-none text-cream-50 animate-rise sm:text-7xl">Momentos que <span class="italic text-carmine-500">brillan</span></h1>
-          <p class="section-lead animate-rise">Explora los rincones más icónicos de Lumière Ciné. Toca una imagen para verla en grande.</p>
+          <h1 class="font-display text-5xl leading-none text-cream-50 animate-rise sm:text-7xl">Un rollo de <span class="italic text-carmine-500">momentos</span></h1>
+          <p class="section-lead animate-rise">Desliza la cinta como si pasaras fotogramas en la moviola. Toca cualquier cuadro para verlo en grande.</p>
         </div>
-        <p class="text-sm text-muted animate-rise"><span id="gallery-count">8</span> fotografías</p>
+        <div class="flex gap-2 animate-rise">
+          <button type="button" class="grid h-12 w-12 place-items-center rounded-full border border-ink-600 text-cream-100 transition hover:border-carmine-500 hover:bg-carmine-500" data-reel="-1" aria-label="Fotogramas anteriores"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+          <button type="button" class="grid h-12 w-12 place-items-center rounded-full border border-ink-600 text-cream-100 transition hover:border-carmine-500 hover:bg-carmine-500" data-reel="1" aria-label="Fotogramas siguientes"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+        </div>
       </div>
     </header>
 
-    <section class="pb-24 sm:pb-32" aria-label="Fotografías">
+    <!-- CINTA DE PELÍCULA -->
+    <section aria-label="Cinta de fotogramas" class="reel">
+      <div class="reel-holes" aria-hidden="true"></div>
+      <ul id="reel" class="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 py-3 sm:px-8"></ul>
+      <div class="reel-holes" aria-hidden="true"></div>
+    </section>
+    <div class="container-site mt-4 flex items-center gap-4">
+      <span class="font-mono text-xs text-muted" data-reel-pos>01</span>
+      <span class="h-px flex-1 bg-ink-700"><span class="block h-px bg-carmine-500 transition-all" data-reel-bar style="width:0"></span></span>
+      <span class="font-mono text-xs text-muted" data-reel-total>08</span>
+    </div>
+
+    <!-- HOJA DE CONTACTOS -->
+    <section class="py-24 sm:py-32" aria-labelledby="t-contactos">
       <div class="container-site">
-        <ul id="gallery" class="columns-1 gap-5 sm:columns-2 lg:columns-3 [&>li]:mb-5"></ul>
+        <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div class="reveal space-y-4">
+            <p class="eyebrow">Hoja de contactos</p>
+            <h2 id="t-contactos" class="section-title">Explora por rincón</h2>
+          </div>
+          <div class="reveal no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 md:mx-0 md:px-0" id="gallery-filters" role="group" aria-label="Filtrar fotografías"></div>
+        </div>
+        <ul id="gallery" class="contact-sheet mt-12 grid auto-rows-[9rem] grid-cols-2 gap-3 sm:auto-rows-[14rem] rounded-3xl bg-cream-100 p-3 sm:gap-4 sm:p-5 lg:grid-cols-4"></ul>
       </div>
     </section>
 
@@ -60,7 +83,7 @@
     <dialog id="lightbox" class="m-auto h-full max-h-none w-full max-w-none bg-ink-950 p-0 text-cream-100 backdrop:bg-ink-950" aria-label="Visor de imágenes">
       <div class="flex h-full flex-col">
         <div class="container-site flex h-20 shrink-0 items-center justify-between">
-          <p class="text-sm text-muted"><span data-lb-index>1</span> / <span data-lb-total>8</span></p>
+          <p class="font-mono text-sm text-muted">Fotograma <span data-lb-index>1</span> / <span data-lb-total>8</span></p>
           <button type="button" class="grid h-11 w-11 place-items-center rounded-full border border-ink-600 hover:border-cream-100" data-lb-close aria-label="Cerrar visor">
             <i class="fa-solid fa-xmark" aria-hidden="true"></i>
           </button>
@@ -68,6 +91,7 @@
         <figure class="relative flex min-h-0 flex-1 flex-col items-center justify-center gap-5 px-5 pb-8">
           <img data-lb-img src="" alt="" class="min-h-0 max-w-full flex-1 rounded-xl object-contain">
           <figcaption class="text-center">
+            <p data-lb-cat class="text-[11px] font-bold uppercase tracking-[0.25em] text-carmine-400"></p>
             <p data-lb-title class="font-display text-2xl text-cream-50"></p>
             <p data-lb-text class="text-sm text-muted"></p>
           </figcaption>

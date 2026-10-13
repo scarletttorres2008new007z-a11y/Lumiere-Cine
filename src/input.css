@@ -174,13 +174,165 @@
 
   /* Diálogos */
   .dialog {
-    @apply m-auto w-[calc(100%-2rem)] max-w-lg rounded-2xl border border-ink-700 bg-ink-900 p-0 text-cream-100;
+    @apply m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-lg overflow-y-auto rounded-2xl border border-ink-700 bg-ink-900 p-0 text-cream-100;
   }
   .dialog::backdrop {
     background: rgb(10 10 11 / 0.85);
   }
   .dialog[open] {
     @apply animate-rise;
+  }
+
+  .dialog-wide {
+    @apply max-w-3xl;
+  }
+
+
+  /* Boletos de experiencias */
+  .stub {
+    @apply relative flex min-h-[19rem] flex-col gap-2 rounded-2xl bg-cream-100 p-6 text-ink-950 transition duration-300 hover:-translate-y-1.5;
+    -webkit-mask: radial-gradient(circle 12px at 0 calc(100% - 74px), #0000 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle 12px at 100% calc(100% - 74px), #0000 98%, #000) right / 51% 100% no-repeat;
+    mask: radial-gradient(circle 12px at 0 calc(100% - 74px), #0000 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle 12px at 100% calc(100% - 74px), #0000 98%, #000) right / 51% 100% no-repeat;
+  }
+  .stub-dark {
+    @apply bg-carmine-500 text-white;
+  }
+  .stub-top {
+    @apply mb-6 flex items-center justify-between;
+  }
+  .stub-num {
+    @apply font-mono text-xs font-bold tracking-[0.3em] opacity-60;
+  }
+  .stub-foot {
+    @apply mt-auto flex h-[74px] items-center justify-between border-t-2 border-dashed;
+    border-color: rgb(10 10 11 / 0.15);
+  }
+  .stub-dark .stub-foot {
+    border-color: rgb(255 255 255 / 0.3);
+  }
+  .stub-cta {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider opacity-70 transition group-hover:opacity-100;
+  }
+
+  /* Selección de asientos */
+  .seat {
+    @apply block h-6 w-6 rounded-t-lg rounded-b-sm border border-muted/40 bg-ink-600 transition sm:h-7 sm:w-7;
+  }
+  button.seat:hover {
+    @apply border-cream-100;
+  }
+  .seat-on {
+    @apply border-carmine-500 bg-carmine-500;
+  }
+  .seat-taken {
+    @apply border-ink-800 bg-ink-850;
+  }
+  .screen {
+    @apply mx-auto h-2 rounded-full bg-cream-100;
+    box-shadow: 0 18px 40px -6px rgb(242 235 221 / 0.35);
+  }
+
+  /* Boleto */
+  .ticket {
+    @apply overflow-hidden rounded-2xl bg-cream-100 text-ink-950;
+    -webkit-mask: radial-gradient(circle 14px at 0 var(--tear, 152px), #0000 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle 14px at 100% var(--tear, 152px), #0000 98%, #000) right / 51% 100% no-repeat;
+    mask: radial-gradient(circle 14px at 0 var(--tear, 152px), #0000 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle 14px at 100% var(--tear, 152px), #0000 98%, #000) right / 51% 100% no-repeat;
+  }
+  .ticket-tear {
+    @apply mx-5 border-t-2 border-dashed border-cream-300;
+  }
+  .barcode {
+    @apply h-10 w-28 shrink-0;
+    background: repeating-linear-gradient(90deg, #fbf8f2 0 2px, transparent 2px 4px, #fbf8f2 4px 5px, transparent 5px 8px, #fbf8f2 8px 11px, transparent 11px 12px);
+  }
+
+  /* Tarjeta de miembro */
+  .member-card {
+    @apply relative overflow-hidden rounded-2xl p-6 text-white;
+    aspect-ratio: 1.586;
+  }
+  .member-clasica {
+    @apply bg-ink-700;
+  }
+  .member-gold {
+    @apply bg-gold-500 text-ink-950;
+  }
+  .member-vip {
+    @apply bg-carmine-600;
+  }
+  .member-card::after {
+    content: '';
+    @apply absolute -right-16 -top-16 h-48 w-48 rounded-full border-[24px] border-white/10;
+  }
+
+  /* Cuenta regresiva */
+  .countdown {
+    @apply flex gap-2 text-[11px] uppercase tracking-wider text-muted;
+  }
+  .countdown span {
+    @apply flex items-baseline gap-1 rounded-md bg-ink-800 px-2 py-1;
+  }
+  .countdown b {
+    @apply font-display text-base font-normal text-cream-50;
+  }
+
+  /* Cinta de película */
+  .filmstrip {
+    @apply h-6 w-full bg-ink-950;
+    background-image: repeating-linear-gradient(90deg, transparent 0 14px, #2a2a30 14px 30px);
+    background-size: 100% 10px;
+    background-position: 0 center;
+    background-repeat: repeat-x;
+  }
+
+  /* Marquesina con desplazamiento */
+  .marquee {
+    @apply flex overflow-hidden whitespace-nowrap;
+  }
+  .marquee-track {
+    @apply flex shrink-0 items-center gap-10 pr-10;
+    animation: marquee 38s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* Letras de marquesina con bombillas */
+  .bulbs {
+    background-image: radial-gradient(circle, #e0b867 2px, transparent 2.5px);
+    background-size: 18px 18px;
+  }
+
+  /* Telón de entrada */
+  .curtain {
+    @apply pointer-events-none fixed inset-0 z-[100] grid place-items-center;
+  }
+  .curtain-panel {
+    @apply absolute inset-y-0 w-1/2 bg-carmine-600;
+    background-image: repeating-linear-gradient(90deg, #a50d26 0 28px, #7f0a1d 28px 34px);
+    transition: transform 1.4s cubic-bezier(0.7, 0, 0.2, 1);
+  }
+  .curtain-left {
+    @apply left-0;
+  }
+  .curtain-right {
+    @apply right-0;
+  }
+  .curtain-logo {
+    @apply relative transition-opacity duration-500;
+  }
+  .curtain.is-open .curtain-left {
+    transform: translateX(-100%);
+  }
+  .curtain.is-open .curtain-right {
+    transform: translateX(100%);
+  }
+  .curtain.is-open .curtain-logo {
+    opacity: 0;
   }
 }
 
@@ -202,6 +354,27 @@
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media print {
+  body > *:not(dialog) {
+    display: none !important;
+  }
+  dialog {
+    position: static;
+    border: 0;
+    max-width: none;
+  }
+  dialog [data-print],
+  dialog [data-close] {
+    display: none !important;
   }
 }
 

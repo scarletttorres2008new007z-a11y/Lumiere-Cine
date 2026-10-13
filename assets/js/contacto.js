@@ -169,4 +169,12 @@ document.addEventListener('lumiere:ready', () => {
   );
 
   if (paquetes.length) paquetes.forEach((c, i) => (c.tabIndex = i === 0 ? 0 : -1));
+
+  // Paquete elegido desde otra página: contacto.html?paquete=vip#reservar
+  const preset = new URLSearchParams(location.search).get('paquete');
+  const presetCard = paquetes.find((c) => c.dataset.paquete === preset);
+  if (presetCard) {
+    pickPaquete(presetCard);
+    selectTab('reservar', { updateHash: false });
+  }
 });

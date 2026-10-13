@@ -4,8 +4,24 @@
    ========================================================================== */
 
 window.LUMIERE = {
-  // Precio de referencia por entrada (USD). Se usa en el modal de compra.
-  precioEntrada: 7.5,
+  // Precio por entrada (USD) según la sala. Se usa en la compra de entradas.
+  precios: { 'Sala 1': 7.5, 'Sala 2': 7.5, 'Sala VIP': 12 },
+
+  // Redes sociales (cámbialas por las cuentas reales del cine)
+  redes: {
+    Facebook: 'https://www.facebook.com/',
+    Instagram: 'https://www.instagram.com/',
+    X: 'https://x.com/',
+    YouTube: 'https://www.youtube.com/',
+    TikTok: 'https://www.tiktok.com/',
+  },
+
+  // Planes de membresía (precio mensual en USD)
+  planes: {
+    clasica: { nombre: 'Clásica', precio: 9 },
+    gold: { nombre: 'Gold', precio: 19 },
+    vip: { nombre: 'VIP', precio: 39 },
+  },
 
   cartelera: [
     {
@@ -46,12 +62,14 @@ window.LUMIERE = {
       titulo: 'Avengers: Doomsday',
       generos: ['Acción', 'Superhéroes'],
       poster: 'assets/img/peliculas/avengers-doomsday.webp',
+      estreno: '2026-12-18',
     },
     {
       id: 'dune-parte-tres',
       titulo: 'Dune: Parte Tres',
       generos: ['Ciencia ficción', 'Épica'],
       poster: 'assets/img/peliculas/dune-parte-tres.webp',
+      estreno: '2026-12-18',
     },
   ],
 

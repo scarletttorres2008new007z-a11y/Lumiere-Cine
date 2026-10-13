@@ -6,7 +6,7 @@ Sitio web estático de Lumière Ciné, un cine de autor en San Salvador.
 
 - **HTML5** semántico y accesible (navegación con teclado, etiquetas ARIA, foco visible).
 - **Tailwind CSS 3** para los estilos. El CSS ya compilado está en `assets/css/styles.css`, así que el sitio funciona sin instalar nada.
-- **JavaScript** sin dependencias: cabecera y pie compartidos, cartelera con filtros, compra de entradas en un modal, galería con visor, formularios con validación.
+- **JavaScript** sin dependencias: cabecera y pie compartidos, telón de entrada, marquesina con el programa del día, cartelera con filtros, compra de entradas con selección de asientos y boleto final, ficha de cada película, avisos de estreno con cuenta regresiva, alta de membresía con tarjeta de miembro, galería con visor y formularios con validación.
 - **Font Awesome 6** para los íconos y fuentes **DM Serif Display** e **Inter**, todo incluido en el proyecto (funciona sin conexión).
 
 ## Cómo verlo
@@ -34,7 +34,9 @@ tailwind.config.js      Paleta de colores y tipografías
 ## Editar contenido
 
 - **Cartelera y estrenos:** edita `assets/js/data.js`. Cada película tiene título, géneros, póster y horarios.
+- **Precios por sala, planes de membresía y redes sociales:** también en `assets/js/data.js`. Cambia los enlaces de redes por las cuentas reales del cine.
 - **Textos de cada página:** edita el `.html` correspondiente.
+- **Enlaces útiles:** `contacto.html?paquete=vip#reservar` abre la reserva con el paquete elegido y `cartelera.html#comprar-marty-supreme` abre directamente la compra de esa película.
 
 ## Cambiar estilos
 

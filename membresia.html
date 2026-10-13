@@ -28,6 +28,11 @@
           <p class="eyebrow animate-rise">Membresía</p>
           <h1 class="font-display text-5xl leading-none text-cream-50 animate-rise sm:text-7xl">Nuestras <span class="italic text-carmine-500">membresías</span></h1>
           <p class="section-lead animate-rise">Elige tu plan y disfruta de beneficios exclusivos en cada visita.</p>
+          <div class="relative mt-6 hidden h-48 w-[26rem] animate-rise sm:block" aria-hidden="true">
+            <div class="member-card member-clasica absolute left-0 top-6 w-64 -rotate-6 p-5"><p class="font-display text-xl">Lumière <span class="italic">ciné</span></p><p class="absolute bottom-5 left-5 text-[10px] font-bold uppercase tracking-[0.25em]">Clásica</p></div>
+            <div class="member-card member-gold absolute left-20 top-2 w-64 -rotate-1 p-5"><p class="font-display text-xl">Lumière <span class="italic">ciné</span></p><p class="absolute bottom-5 left-5 text-[10px] font-bold uppercase tracking-[0.25em]">Gold</p></div>
+            <div class="member-card member-vip absolute left-40 top-8 w-64 rotate-6 p-5"><p class="font-display text-xl">Lumière <span class="italic">ciné</span></p><p class="absolute bottom-5 left-5 text-[10px] font-bold uppercase tracking-[0.25em]">VIP</p></div>
+          </div>
         </div>
         <div class="inline-flex self-start rounded-full border border-ink-600 p-1 animate-rise lg:self-auto" role="group" aria-label="Periodo de pago">
           <button type="button" class="chip border-0" data-period="mensual" aria-pressed="true">Mensual</button>
@@ -49,7 +54,7 @@
             <li class="flex gap-3"><i class="fa-solid fa-check mt-1 text-carmine-400" aria-hidden="true"></i>10% de descuento en dulcería</li>
             <li class="flex gap-3"><i class="fa-solid fa-check mt-1 text-carmine-400" aria-hidden="true"></i>Gaceta mensual</li>
           </ul>
-          <a href="contacto.html#contacto" class="btn-ghost mt-auto">Elegir Clásica</a>
+          <button type="button" class="btn-ghost mt-auto" data-member="clasica" data-period="mensual">Elegir Clásica</button>
         </article>
 
         <article class="reveal relative flex flex-col gap-8 rounded-2xl bg-carmine-500 p-8 text-white" style="transition-delay:90ms">
@@ -65,7 +70,7 @@
             <li class="flex gap-3"><i class="fa-solid fa-check mt-1" aria-hidden="true"></i>Preventa 48 horas antes</li>
             <li class="flex gap-3"><i class="fa-solid fa-check mt-1" aria-hidden="true"></i>20% de descuento en dulcería</li>
           </ul>
-          <a href="contacto.html#contacto" class="btn-light mt-auto">Elegir Gold</a>
+          <button type="button" class="btn-light mt-auto" data-member="gold" data-period="mensual">Elegir Gold</button>
         </article>
 
         <article class="reveal card flex flex-col gap-8 p-8" style="transition-delay:180ms">
@@ -80,10 +85,28 @@
             <li class="flex gap-3"><i class="fa-solid fa-check mt-1 text-gold-400" aria-hidden="true"></i>Funciones privadas para miembros</li>
             <li class="flex gap-3"><i class="fa-solid fa-check mt-1 text-gold-400" aria-hidden="true"></i>Acceso a Le Bar de Nuit</li>
           </ul>
-          <a href="contacto.html#contacto" class="btn-ghost mt-auto">Elegir VIP</a>
+          <button type="button" class="btn-ghost mt-auto" data-member="vip" data-period="mensual">Elegir VIP</button>
         </article>
       </div>
-      <p class="container-site mt-8 text-xs text-muted">Precios de referencia en dólares. Puedes cancelar cuando quieras.</p>
+      <p class="container-site mt-8 text-xs text-muted">Precios en dólares. Puedes cancelar cuando quieras.</p>
+    </section>
+
+    <section class="border-t border-ink-700 bg-ink-900 py-20 sm:py-28" aria-labelledby="t-como">
+      <div class="container-site">
+        <div class="reveal space-y-4">
+          <p class="eyebrow">Cómo funciona</p>
+          <h2 id="t-como" class="section-title">Tres pasos y ya eres parte</h2>
+        </div>
+        <ol class="mt-12 grid gap-5 md:grid-cols-3">
+          <li class="reveal card space-y-3 p-8"><span class="font-display text-5xl text-carmine-500">01</span><h3 class="font-display text-2xl text-cream-50">Elige tu plan</h3><p class="text-sm text-muted">Mensual o anual. El anual te regala dos meses.</p></li>
+          <li class="reveal card space-y-3 p-8" style="transition-delay:90ms"><span class="font-display text-5xl text-carmine-500">02</span><h3 class="font-display text-2xl text-cream-50">Recibe tu tarjeta</h3><p class="text-sm text-muted">Te llega al instante por email con tu número de miembro.</p></li>
+          <li class="reveal card space-y-3 p-8" style="transition-delay:180ms"><span class="font-display text-5xl text-carmine-500">03</span><h3 class="font-display text-2xl text-cream-50">Disfruta</h3><p class="text-sm text-muted">Preséntala en taquilla y usa tus beneficios desde la primera función.</p></li>
+        </ol>
+        <div class="reveal mt-12 flex flex-wrap gap-3">
+          <button type="button" class="btn-primary" data-member="gold" data-period="mensual">Empezar con Gold</button>
+          <a href="contacto.html#faq" class="btn-ghost">Preguntas frecuentes</a>
+        </div>
+      </div>
     </section>
   </main>
   <script>
@@ -98,6 +121,7 @@
             el.textContent = '$' + (anual ? monthly * 10 : monthly);
           });
           document.querySelectorAll('[data-unit]').forEach((el) => (el.textContent = anual ? '/ año' : '/ mes'));
+          document.querySelectorAll('[data-member]').forEach((el) => (el.dataset.period = btn.dataset.period));
         })
       );
     });

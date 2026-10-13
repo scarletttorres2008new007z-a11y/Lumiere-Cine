@@ -47,22 +47,18 @@
         <!-- PANEL: CONTÁCTANOS -->
         <div class="mt-12 grid gap-10 lg:grid-cols-[1fr_1.4fr]" role="tabpanel" id="panel-contacto" aria-labelledby="tab-contacto">
           <ul class="grid content-start gap-4 sm:grid-cols-2 lg:grid-cols-1">
-            <li class="card flex gap-4 p-6">
+            <li><a href="tel:+50321000000" class="card group flex gap-4 p-6 transition hover:border-carmine-500">
               <span class="icon-box"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
-              <div><h2 class="font-semibold text-cream-50">Llámanos</h2><p class="text-sm text-cream-300">+503 2100-0000</p><p class="text-xs text-muted">Lun a Dom, 14:00 a 00:00</p></div>
-            </li>
-            <li class="card flex gap-4 p-6">
+              <div><h2 class="font-semibold text-cream-50">Llámanos</h2><p class="text-sm text-cream-300">+503 2100-0000</p><p class="text-xs text-muted">Lun a Dom, 14:00 a 00:00</p></div><i class="fa-solid fa-arrow-up-right-from-square ml-auto text-sm text-muted transition group-hover:text-carmine-400" aria-hidden="true"></i></a></li>
+            <li><a href="mailto:contacto@lumierecine.sv" class="card group flex gap-4 p-6 transition hover:border-carmine-500">
               <span class="icon-box"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
-              <div><h2 class="font-semibold text-cream-50">Escríbenos</h2><p class="text-sm text-cream-300">contacto@lumierecine.sv</p><p class="text-xs text-muted">Respuesta en 24 horas</p></div>
-            </li>
-            <li class="card flex gap-4 p-6">
+              <div><h2 class="font-semibold text-cream-50">Escríbenos</h2><p class="text-sm text-cream-300">contacto@lumierecine.sv</p><p class="text-xs text-muted">Respuesta en 24 horas</p></div><i class="fa-solid fa-arrow-up-right-from-square ml-auto text-sm text-muted transition group-hover:text-carmine-400" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.google.com/maps/search/?api=1&amp;query=San+Salvador,+El+Salvador" target="_blank" rel="noopener noreferrer" class="card group flex gap-4 p-6 transition hover:border-carmine-500">
               <span class="icon-box"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
-              <div><h2 class="font-semibold text-cream-50">Visítanos</h2><p class="text-sm text-cream-300">San Salvador, El Salvador</p><p class="text-xs text-muted">Lun a Dom, 14:00 a 00:00</p></div>
-            </li>
-            <li class="card flex gap-4 p-6">
+              <div><h2 class="font-semibold text-cream-50">Visítanos</h2><p class="text-sm text-cream-300">San Salvador, El Salvador</p><p class="text-xs text-muted">Lun a Dom, 14:00 a 00:00</p></div><i class="fa-solid fa-arrow-up-right-from-square ml-auto text-sm text-muted transition group-hover:text-carmine-400" aria-hidden="true"></i></a></li>
+            <li><a href="https://wa.me/50321000000" target="_blank" rel="noopener noreferrer" class="card group flex gap-4 p-6 transition hover:border-carmine-500">
               <span class="icon-box"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span>
-              <div><h2 class="font-semibold text-cream-50">WhatsApp</h2><p class="text-sm text-cream-300">+503 2100-0000</p><p class="text-xs text-muted">Chat disponible 24/7</p></div>
-            </li>
+              <div><h2 class="font-semibold text-cream-50">WhatsApp</h2><p class="text-sm text-cream-300">+503 2100-0000</p><p class="text-xs text-muted">Chat disponible 24/7</p></div><i class="fa-solid fa-arrow-up-right-from-square ml-auto text-sm text-muted transition group-hover:text-carmine-400" aria-hidden="true"></i></a></li>
           </ul>
 
           <div class="card p-6 sm:p-10">
@@ -140,7 +136,7 @@
                 <div class="field"><label class="label" for="res-telefono">Teléfono</label><input class="input" type="tel" id="res-telefono" name="telefono" inputmode="numeric" data-rules="required phone" data-label="El teléfono"><span class="error-msg"></span></div>
                 <div class="field">
                   <label class="label" for="res-personas">Personas</label>
-                  <select class="input" id="res-personas" name="personas" data-rules="required" data-label="La cantidad" data-msg="Indica cuántas personas">
+                  <select class="input" id="res-personas" name="personas" data-rules="required" data-label="La cantidad">
                     <option value="">Selecciona</option>
                     <option value="1">1 persona</option>
                     <option value="2">2 personas</option>
@@ -150,7 +146,7 @@
                   </select>
                   <span class="error-msg"></span>
                 </div>
-                <div class="field"><label class="label" for="res-fecha">Fecha</label><input class="input" type="date" id="res-fecha" name="fecha" data-rules="required future" data-label="La fecha" data-msg="Elige una fecha"><span class="error-msg"></span></div>
+                <div class="field"><label class="label" for="res-fecha">Fecha</label><input class="input" type="date" id="res-fecha" name="fecha" data-rules="required future" data-label="La fecha"><span class="error-msg"></span></div>
               </div>
               <div class="field"><label class="label" for="res-comentarios">Comentarios (opcional)</label><textarea class="input resize-y" id="res-comentarios" name="comentarios" rows="3" maxlength="500" placeholder="Detalles adicionales"></textarea></div>
               <button type="submit" class="btn-primary justify-self-start"><i class="fa-solid fa-ticket" aria-hidden="true"></i> Solicitar reserva</button>
@@ -186,7 +182,7 @@
               <div class="field"><label class="label" for="col-email">Email</label><input class="input" type="email" id="col-email" name="email" autocomplete="email" data-rules="required email" data-label="El email"><span class="error-msg"></span></div>
               <div class="field">
                 <label class="label" for="col-tipo">Tipo de colaboración</label>
-                <select class="input" id="col-tipo" name="tipo" data-rules="required" data-label="El tipo" data-msg="Elige un tipo de colaboración">
+                <select class="input" id="col-tipo" name="tipo" data-rules="required" data-label="El tipo">
                   <option value="">Selecciona</option>
                   <option value="fotografia">Fotografía</option>
                   <option value="blog">Blog</option>
@@ -203,7 +199,7 @@
             <div class="field"><label class="label" for="col-web">Sitio web o redes (opcional)</label><input class="input" type="url" id="col-web" name="web" placeholder="https://ejemplo.com" data-rules="url" data-label="El enlace"><span class="error-msg"></span></div>
             <div class="field">
               <div class="flex justify-between"><label class="label" for="col-propuesta">Propuesta</label><span class="text-xs text-muted" data-count-for="col-propuesta">0/1000</span></div>
-              <textarea class="input min-h-[9rem] resize-y" id="col-propuesta" name="propuesta" maxlength="1000" placeholder="Describe tu propuesta de colaboración" data-rules="required" data-label="La propuesta" data-msg="Cuéntanos tu propuesta"></textarea>
+              <textarea class="input min-h-[9rem] resize-y" id="col-propuesta" name="propuesta" maxlength="1000" placeholder="Describe tu propuesta de colaboración" data-rules="required" data-label="La propuesta"></textarea>
               <span class="error-msg"></span>
             </div>
             <button type="submit" class="btn-primary justify-self-start"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Enviar propuesta</button>

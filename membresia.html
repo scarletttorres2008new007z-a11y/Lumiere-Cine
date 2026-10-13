@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Membresía | Lumière Ciné</title>
+  <meta name="description" content="Planes de membresía con beneficios exclusivos en Lumière Ciné.">
+  <meta name="theme-color" content="#0A0A0B">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preload" href="assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/solid.min.css">
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/brands.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body data-page="membresia">
+  <div data-component="header"></div>
+
+  <main id="contenido" class="pt-20">
+    <header class="py-16 sm:py-24">
+      <div class="container-site flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+        <div class="space-y-5">
+          <p class="eyebrow animate-rise">Membresía</p>
+          <h1 class="font-display text-5xl leading-none text-cream-50 animate-rise sm:text-7xl">Nuestras <span class="italic text-carmine-500">membresías</span></h1>
+          <p class="section-lead animate-rise">Elige tu plan y disfruta de beneficios exclusivos en cada visita.</p>
+        </div>
+        <div class="inline-flex self-start rounded-full border border-ink-600 p-1 animate-rise lg:self-auto" role="group" aria-label="Periodo de pago">
+          <button type="button" class="chip border-0" data-period="mensual" aria-pressed="true">Mensual</button>
+          <button type="button" class="chip border-0" data-period="anual" aria-pressed="false">Anual <span class="ml-1.5 rounded-full bg-gold-500 px-2 py-0.5 text-[10px] font-bold text-ink-950">2 meses gratis</span></button>
+        </div>
+      </div>
+    </header>
+
+    <section class="pb-24 sm:pb-32" aria-label="Planes">
+      <div class="container-site grid gap-6 lg:grid-cols-3">
+        <article class="reveal card flex flex-col gap-8 p-8">
+          <div class="space-y-2">
+            <h2 class="font-display text-3xl text-cream-50">Clásica</h2>
+            <p class="text-sm text-muted">Para quienes van al cine de vez en cuando.</p>
+          </div>
+          <p class="flex items-baseline gap-2"><span class="font-display text-5xl text-cream-50" data-price="9">$9</span><span class="text-sm text-muted" data-unit>/ mes</span></p>
+          <ul class="space-y-3 text-sm text-cream-300">
+            <li class="flex gap-3"><i class="fa-solid fa-check mt-1 text-carmine-400" aria-hidden="true"></i>2 entradas generales al mes</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check mt-1 text-carmine-400" aria-hidden="true"></i>10% de descuento en dulcería</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check mt-1 text-carmine-400" aria-hidden="true"></i>Gaceta mensual</li>
+          </ul>
+          <a href="contacto.html#contacto" class="btn-ghost mt-auto">Elegir Clásica</a>
+        </article>
+
+        <article class="reveal relative flex flex-col gap-8 rounded-2xl bg-carmine-500 p-8 text-white" style="transition-delay:90ms">
+          <span class="absolute right-6 top-6 rounded-full bg-ink-950 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-cream-50">Más elegida</span>
+          <div class="space-y-2">
+            <h2 class="font-display text-3xl">Gold</h2>
+            <p class="text-sm text-white/80">Para cinéfilos de todos los fines de semana.</p>
+          </div>
+          <p class="flex items-baseline gap-2"><span class="font-display text-5xl" data-price="19">$19</span><span class="text-sm text-white/80" data-unit>/ mes</span></p>
+          <ul class="space-y-3 text-sm">
+            <li class="flex gap-3"><i class="fa-solid fa-check mt-1" aria-hidden="true"></i>4 entradas en sala preferente</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check mt-1" aria-hidden="true"></i>Combo de palomitas incluido</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check mt-1" aria-hidden="true"></i>Preventa 48 horas antes</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check mt-1" aria-hidden="true"></i>20% de descuento en dulcería</li>
+          </ul>
+          <a href="contacto.html#contacto" class="btn-light mt-auto">Elegir Gold</a>
+        </article>
+
+        <article class="reveal card flex flex-col gap-8 p-8" style="transition-delay:180ms">
+          <div class="space-y-2">
+            <h2 class="font-display text-3xl text-cream-50">VIP</h2>
+            <p class="text-sm text-muted">La experiencia completa, sin límites.</p>
+          </div>
+          <p class="flex items-baseline gap-2"><span class="font-display text-5xl text-cream-50" data-price="39">$39</span><span class="text-sm text-muted" data-unit>/ mes</span></p>
+          <ul class="space-y-3 text-sm text-cream-300">
+            <li class="flex gap-3"><i class="fa-solid fa-check mt-1 text-gold-400" aria-hidden="true"></i>Entradas ilimitadas en sala VIP</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check mt-1 text-gold-400" aria-hidden="true"></i>Una cena gourmet al mes</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check mt-1 text-gold-400" aria-hidden="true"></i>Funciones privadas para miembros</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check mt-1 text-gold-400" aria-hidden="true"></i>Acceso a Le Bar de Nuit</li>
+          </ul>
+          <a href="contacto.html#contacto" class="btn-ghost mt-auto">Elegir VIP</a>
+        </article>
+      </div>
+      <p class="container-site mt-8 text-xs text-muted">Precios de referencia en dólares. Puedes cancelar cuando quieras.</p>
+    </section>
+  </main>
+  <script>
+    document.addEventListener('lumiere:ready', () => {
+      const buttons = document.querySelectorAll('[data-period]');
+      buttons.forEach((btn) =>
+        btn.addEventListener('click', () => {
+          const anual = btn.dataset.period === 'anual';
+          buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+          document.querySelectorAll('[data-price]').forEach((el) => {
+            const monthly = Number(el.dataset.price);
+            el.textContent = '$' + (anual ? monthly * 10 : monthly);
+          });
+          document.querySelectorAll('[data-unit]').forEach((el) => (el.textContent = anual ? '/ año' : '/ mes'));
+        })
+      );
+    });
+  </script>
+
+  <div data-component="footer"></div>
+</body>
+</html>

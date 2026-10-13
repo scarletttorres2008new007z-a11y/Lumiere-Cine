@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería | Lumière Ciné</title>
+  <meta name="description" content="Explora los rincones más icónicos de Lumière Ciné.">
+  <meta name="theme-color" content="#0A0A0B">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preload" href="assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/solid.min.css">
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/brands.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/galeria.js" defer></script>
+</head>
+<body data-page="galeria">
+  <div data-component="header"></div>
+
+  <main id="contenido" class="pt-20">
+    <header class="py-16 sm:py-24">
+      <div class="container-site grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div class="space-y-5">
+          <p class="eyebrow animate-rise">Galería</p>
+          <h1 class="font-display text-5xl leading-none text-cream-50 animate-rise sm:text-7xl">Momentos que <span class="italic text-carmine-500">brillan</span></h1>
+          <p class="section-lead animate-rise">Explora los rincones más icónicos de Lumière Ciné. Toca una imagen para verla en grande.</p>
+        </div>
+        <p class="text-sm text-muted animate-rise"><span id="gallery-count">8</span> fotografías</p>
+      </div>
+    </header>
+
+    <section class="pb-24 sm:pb-32" aria-label="Fotografías">
+      <div class="container-site">
+        <ul id="gallery" class="columns-1 gap-5 sm:columns-2 lg:columns-3 [&>li]:mb-5"></ul>
+      </div>
+    </section>
+
+    <section class="pb-24 sm:pb-32">
+      <div class="container-site">
+        <div class="reveal grid gap-8 rounded-3xl border border-ink-700 bg-ink-900 p-10 sm:p-14 lg:grid-cols-2 lg:items-center">
+          <div class="space-y-3">
+            <p class="eyebrow">Gaceta mensual</p>
+            <h2 class="section-title">Nos vemos en la oscuridad</h2>
+            <p class="text-muted">Suscríbete y recibe cada mes los estrenos, funciones especiales y eventos de la casa.</p>
+          </div>
+          <form class="flex flex-col gap-3 sm:flex-row" data-newsletter novalidate>
+            <label for="gallery-email" class="sr-only">Correo electrónico</label>
+            <input id="gallery-email" type="email" placeholder="tu@correo.com" class="input rounded-full" autocomplete="email" required>
+            <button type="submit" class="btn-primary shrink-0">Suscribirme</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <dialog id="lightbox" class="m-auto h-full max-h-none w-full max-w-none bg-ink-950 p-0 text-cream-100 backdrop:bg-ink-950" aria-label="Visor de imágenes">
+      <div class="flex h-full flex-col">
+        <div class="container-site flex h-20 shrink-0 items-center justify-between">
+          <p class="text-sm text-muted"><span data-lb-index>1</span> / <span data-lb-total>8</span></p>
+          <button type="button" class="grid h-11 w-11 place-items-center rounded-full border border-ink-600 hover:border-cream-100" data-lb-close aria-label="Cerrar visor">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+        <figure class="relative flex min-h-0 flex-1 flex-col items-center justify-center gap-5 px-5 pb-8">
+          <img data-lb-img src="" alt="" class="min-h-0 max-w-full flex-1 rounded-xl object-contain">
+          <figcaption class="text-center">
+            <p data-lb-title class="font-display text-2xl text-cream-50"></p>
+            <p data-lb-text class="text-sm text-muted"></p>
+          </figcaption>
+          <button type="button" class="absolute left-4 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-ink-800 hover:bg-carmine-500 sm:left-8" data-lb-step="-1" aria-label="Imagen anterior">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="absolute right-4 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-ink-800 hover:bg-carmine-500 sm:right-8" data-lb-step="1" aria-label="Imagen siguiente">
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+          </button>
+        </figure>
+      </div>
+    </dialog>
+  </main>
+
+  <div data-component="footer"></div>
+</body>
+</html>

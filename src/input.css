@@ -1,0 +1,220 @@
+/* Fuentes locales (sin depender de servicios externos) */
+@font-face {
+  font-family: 'DM Serif Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/dm-serif-display-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DM Serif Display';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/dm-serif-display-latin-400-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/inter-latin-variable.woff2') format('woff2');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+@layer base {
+  html {
+    @apply scroll-smooth bg-ink-950 antialiased;
+    scroll-padding-top: 6rem;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply min-h-screen bg-ink-950 font-sans text-cream-100 selection:bg-carmine-500 selection:text-white;
+  }
+
+  h1, h2, h3 {
+    @apply text-balance;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-carmine-400 ring-offset-2 ring-offset-ink-950;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Componentes
+   ========================================================================== */
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-site px-5 sm:px-8;
+  }
+
+  /* Tipografía */
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-carmine-400;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply block h-px w-8 bg-carmine-500;
+  }
+  .section-title {
+    @apply font-display text-4xl leading-[1.05] text-cream-50 sm:text-5xl;
+  }
+  .section-lead {
+    @apply max-w-2xl text-base leading-relaxed text-muted sm:text-lg;
+  }
+
+  /* Botones */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition duration-200 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-carmine-500 text-white hover:bg-carmine-600 active:bg-carmine-700;
+  }
+  .btn-light {
+    @apply btn bg-cream-100 text-ink-950 hover:bg-white;
+  }
+  .btn-ghost {
+    @apply btn border border-ink-600 text-cream-100 hover:border-cream-100 hover:bg-cream-100 hover:text-ink-950;
+  }
+  .btn-sm {
+    @apply px-4 py-2 text-xs;
+  }
+
+  /* Navegación */
+  .nav-link {
+    @apply relative py-2 text-sm font-medium text-cream-300 transition-colors hover:text-white;
+  }
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-0.5 w-0 bg-carmine-500 transition-all duration-300;
+  }
+  .nav-link:hover::after,
+  .nav-link[aria-current='page']::after {
+    @apply w-full;
+  }
+  .nav-link[aria-current='page'] {
+    @apply text-white;
+  }
+
+  /* Tarjetas */
+  .card {
+    @apply rounded-2xl border border-ink-700 bg-ink-900;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-full border border-ink-600 px-3.5 py-1.5 text-xs font-medium text-cream-300 transition hover:border-cream-100 hover:text-white;
+  }
+  .chip[aria-pressed='true'],
+  .chip.is-active {
+    @apply border-carmine-500 bg-carmine-500 text-white;
+  }
+
+  .tag {
+    @apply inline-flex items-center rounded-md bg-ink-800 px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-cream-300;
+  }
+
+  /* Formularios */
+  .field {
+    @apply flex flex-col gap-2;
+  }
+  .label {
+    @apply text-xs font-semibold uppercase tracking-wider text-cream-300;
+  }
+  .input {
+    @apply w-full rounded-xl border border-ink-600 bg-ink-850 px-4 py-3 text-sm text-cream-50 placeholder:text-ink-600 transition focus:border-carmine-500 focus:outline-none focus:ring-2 focus:ring-carmine-500/30;
+  }
+  .input.has-error {
+    @apply border-carmine-400 ring-2 ring-carmine-500/20;
+  }
+  .error-msg {
+    @apply min-h-[1rem] text-xs font-medium text-carmine-400;
+  }
+  select.input {
+    @apply cursor-pointer appearance-none bg-no-repeat pr-10;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239C9AA3'%3E%3Cpath d='M5.3 7.3a1 1 0 0 1 1.4 0L10 10.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4Z'/%3E%3C/svg%3E");
+    background-position: right 0.9rem center;
+    background-size: 1.1rem;
+  }
+  input[type='date'].input::-webkit-calendar-picker-indicator {
+    filter: invert(0.8);
+    cursor: pointer;
+  }
+
+  /* Pestañas */
+  .tab {
+    @apply flex shrink-0 items-center gap-2.5 rounded-full px-5 py-2.5 text-sm font-medium text-cream-300 transition hover:text-white;
+  }
+  .tab[aria-selected='true'] {
+    @apply bg-carmine-500 text-white;
+  }
+
+  /* Opción seleccionable (paquetes / planes) */
+  .option-card {
+    @apply card flex cursor-pointer flex-col gap-3 p-6 text-left transition hover:border-ink-600 hover:bg-ink-850;
+  }
+  .option-card[aria-checked='true'] {
+    @apply border-carmine-500 bg-ink-850;
+  }
+
+  .icon-box {
+    @apply grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-ink-800 text-lg text-carmine-400;
+  }
+
+  /* Diálogos */
+  .dialog {
+    @apply m-auto w-[calc(100%-2rem)] max-w-lg rounded-2xl border border-ink-700 bg-ink-900 p-0 text-cream-100;
+  }
+  .dialog::backdrop {
+    background: rgb(10 10 11 / 0.85);
+  }
+  .dialog[open] {
+    @apply animate-rise;
+  }
+}
+
+/* ==========================================================================
+   Utilidades
+   ========================================================================== */
+@layer utilities {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

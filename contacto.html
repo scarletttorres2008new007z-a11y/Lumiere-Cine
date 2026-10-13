@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto | Lumière Ciné</title>
+  <meta name="description" content="Contáctanos, reserva tu experiencia o colabora con Lumière Ciné.">
+  <meta name="theme-color" content="#0A0A0B">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preload" href="assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/solid.min.css">
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/brands.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/contacto.js" defer></script>
+</head>
+<body data-page="contacto">
+  <div data-component="header"></div>
+
+  <main id="contenido" class="pt-20">
+    <header class="py-16 sm:py-24">
+      <div class="container-site space-y-5">
+        <p class="eyebrow animate-rise">Planifica tu visita</p>
+        <h1 class="font-display text-5xl leading-none text-cream-50 animate-rise sm:text-7xl">Contacto</h1>
+        <p class="section-lead animate-rise">Estamos aquí para ayudarte a crear la experiencia cinematográfica perfecta. Escríbenos, reserva o colabora con nosotros.</p>
+      </div>
+    </header>
+
+    <section class="pb-24 sm:pb-32">
+      <div class="container-site">
+        <!-- PESTAÑAS -->
+        <div class="no-scrollbar -mx-5 overflow-x-auto px-5 sm:mx-0 sm:px-0">
+          <div class="inline-flex gap-1 rounded-full border border-ink-700 bg-ink-900 p-1.5" role="tablist" aria-label="Secciones de contacto">
+            <button class="tab" role="tab" id="tab-contacto" aria-controls="panel-contacto" aria-selected="true" data-tab="contacto"><i class="fa-solid fa-phone" aria-hidden="true"></i>Contáctanos</button>
+            <button class="tab" role="tab" id="tab-encuentranos" aria-controls="panel-encuentranos" aria-selected="false" tabindex="-1" data-tab="encuentranos"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Encuéntranos</button>
+            <button class="tab" role="tab" id="tab-reservar" aria-controls="panel-reservar" aria-selected="false" tabindex="-1" data-tab="reservar"><i class="fa-solid fa-ticket" aria-hidden="true"></i>Reservar</button>
+            <button class="tab" role="tab" id="tab-colaborar" aria-controls="panel-colaborar" aria-selected="false" tabindex="-1" data-tab="colaborar"><i class="fa-solid fa-handshake" aria-hidden="true"></i>Colaborar</button>
+            <button class="tab" role="tab" id="tab-faq" aria-controls="panel-faq" aria-selected="false" tabindex="-1" data-tab="faq"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>Preguntas</button>
+          </div>
+        </div>
+
+        <!-- PANEL: CONTÁCTANOS -->
+        <div class="mt-12 grid gap-10 lg:grid-cols-[1fr_1.4fr]" role="tabpanel" id="panel-contacto" aria-labelledby="tab-contacto">
+          <ul class="grid content-start gap-4 sm:grid-cols-2 lg:grid-cols-1">
+            <li class="card flex gap-4 p-6">
+              <span class="icon-box"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+              <div><h2 class="font-semibold text-cream-50">Llámanos</h2><p class="text-sm text-cream-300">+503 2100-0000</p><p class="text-xs text-muted">Lun a Dom, 14:00 a 00:00</p></div>
+            </li>
+            <li class="card flex gap-4 p-6">
+              <span class="icon-box"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+              <div><h2 class="font-semibold text-cream-50">Escríbenos</h2><p class="text-sm text-cream-300">contacto@lumierecine.sv</p><p class="text-xs text-muted">Respuesta en 24 horas</p></div>
+            </li>
+            <li class="card flex gap-4 p-6">
+              <span class="icon-box"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+              <div><h2 class="font-semibold text-cream-50">Visítanos</h2><p class="text-sm text-cream-300">San Salvador, El Salvador</p><p class="text-xs text-muted">Lun a Dom, 14:00 a 00:00</p></div>
+            </li>
+            <li class="card flex gap-4 p-6">
+              <span class="icon-box"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span>
+              <div><h2 class="font-semibold text-cream-50">WhatsApp</h2><p class="text-sm text-cream-300">+503 2100-0000</p><p class="text-xs text-muted">Chat disponible 24/7</p></div>
+            </li>
+          </ul>
+
+          <div class="card p-6 sm:p-10">
+            <form id="contactForm" class="grid gap-5" novalidate data-success="contactSuccess">
+              <div>
+                <h2 class="font-display text-3xl text-cream-50">Envíanos un mensaje</h2>
+                <p class="mt-2 text-sm text-muted">Todos los campos son obligatorios.</p>
+              </div>
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div class="field"><label class="label" for="nombre">Nombre</label><input class="input" type="text" id="nombre" name="nombre" autocomplete="name" data-rules="required" data-label="El nombre"><span class="error-msg"></span></div>
+                <div class="field"><label class="label" for="email">Email</label><input class="input" type="email" id="email" name="email" autocomplete="email" data-rules="required email" data-label="El email"><span class="error-msg"></span></div>
+                <div class="field"><label class="label" for="telefono">Teléfono</label><input class="input" type="tel" id="telefono" name="telefono" autocomplete="tel" inputmode="numeric" data-rules="required phone" data-label="El teléfono"><span class="error-msg"></span></div>
+                <div class="field"><label class="label" for="asunto">Asunto</label><input class="input" type="text" id="asunto" name="asunto" data-rules="required" data-label="El asunto"><span class="error-msg"></span></div>
+              </div>
+              <div class="field">
+                <div class="flex justify-between"><label class="label" for="mensaje">Mensaje</label><span class="text-xs text-muted" data-count-for="mensaje">0/1000</span></div>
+                <textarea class="input min-h-[9rem] resize-y" id="mensaje" name="mensaje" maxlength="1000" data-rules="required" data-label="El mensaje"></textarea>
+                <span class="error-msg"></span>
+              </div>
+              <button type="submit" class="btn-primary justify-self-start"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Enviar mensaje</button>
+            </form>
+            <div id="contactSuccess" class="flex flex-col items-center gap-4 py-10 text-center" hidden>
+              <span class="grid h-16 w-16 place-items-center rounded-full bg-carmine-500 text-2xl text-white"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+              <h2 class="font-display text-3xl text-cream-50">Mensaje enviado</h2>
+              <p class="text-muted">Te contactaremos en las próximas 24 horas.</p>
+              <button type="button" class="btn-ghost" data-reset="contactForm">Enviar otro mensaje</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL: ENCUÉNTRANOS -->
+        <div class="mt-12 grid gap-10 lg:grid-cols-[1.4fr_1fr]" role="tabpanel" id="panel-encuentranos" aria-labelledby="tab-encuentranos" hidden>
+          <div class="space-y-4">
+            <div class="overflow-hidden rounded-2xl border border-ink-700">
+              <iframe title="Mapa de San Salvador" class="h-[420px] w-full grayscale invert-[.9] hue-rotate-180" src="https://www.google.com/maps?q=San+Salvador,+El+Salvador&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=San+Salvador,+El+Salvador" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-sm"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Abrir en Google Maps</a>
+          </div>
+          <div class="space-y-4">
+            <div class="card space-y-4 p-6">
+              <h2 class="font-display text-2xl text-cream-50">Dirección</h2>
+              <p class="flex gap-3 text-sm text-cream-300"><i class="fa-solid fa-location-dot mt-1 text-carmine-500" aria-hidden="true"></i>San Salvador, El Salvador</p>
+              <p class="flex gap-3 text-sm text-cream-300"><i class="fa-solid fa-square-parking mt-1 text-carmine-500" aria-hidden="true"></i>Estacionamiento para clientes</p>
+            </div>
+            <div class="card space-y-5 p-6">
+              <h2 class="font-display text-2xl text-cream-50">Cómo llegar</h2>
+              <div class="flex gap-4"><span class="icon-box"><i class="fa-solid fa-bus" aria-hidden="true"></i></span><div><p class="font-semibold text-cream-50">Autobús</p><p class="text-sm text-muted">Líneas 1, 3 y 5, parada cercana</p></div></div>
+              <div class="flex gap-4"><span class="icon-box"><i class="fa-solid fa-taxi" aria-hidden="true"></i></span><div><p class="font-semibold text-cream-50">Taxi o Uber</p><p class="text-sm text-muted">Ubicación compartible en Google Maps</p></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL: RESERVAR -->
+        <div class="mt-12 space-y-10" role="tabpanel" id="panel-reservar" aria-labelledby="tab-reservar" hidden>
+          <div id="reservaWrap" class="space-y-10">
+            <div>
+              <h2 class="font-display text-3xl text-cream-50">Selecciona tu experiencia</h2>
+              <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" role="radiogroup" aria-label="Paquete" id="paquetes">
+                <button type="button" class="option-card" role="radio" aria-checked="false" data-paquete="premier"><span class="icon-box"><i class="fa-solid fa-film" aria-hidden="true"></i></span><span class="font-display text-2xl text-cream-50">Premier</span><span class="text-sm text-muted">Sala estándar y palomitas</span><span class="mt-auto font-semibold text-cream-50">$12</span></button>
+                <button type="button" class="option-card" role="radio" aria-checked="false" data-paquete="gold"><span class="icon-box"><i class="fa-solid fa-star" aria-hidden="true"></i></span><span class="font-display text-2xl text-cream-50">Gold</span><span class="text-sm text-muted">Sala preferente y combo</span><span class="mt-auto font-semibold text-cream-50">$25</span></button>
+                <button type="button" class="option-card" role="radio" aria-checked="false" data-paquete="vip"><span class="icon-box"><i class="fa-solid fa-crown" aria-hidden="true"></i></span><span class="font-display text-2xl text-cream-50">VIP</span><span class="text-sm text-muted">Sala VIP y cena gourmet</span><span class="mt-auto font-semibold text-cream-50">$45</span></button>
+                <button type="button" class="option-card" role="radio" aria-checked="false" data-paquete="evento"><span class="icon-box"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></span><span class="font-display text-2xl text-cream-50">Evento privado</span><span class="text-sm text-muted">La sala completa para ti</span><span class="mt-auto font-semibold text-cream-50">Cotizar</span></button>
+              </div>
+              <p class="error-msg mt-3" id="paqueteError"></p>
+            </div>
+
+            <form id="reservaForm" class="card grid gap-5 p-6 sm:p-10" novalidate data-success="reservaSuccess" data-hide="reservaWrap">
+              <h2 class="font-display text-3xl text-cream-50">Datos de la reserva</h2>
+              <input type="hidden" name="paquete" id="paqueteInput">
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div class="field"><label class="label" for="res-nombre">Nombre</label><input class="input" type="text" id="res-nombre" name="nombre" autocomplete="name" data-rules="required" data-label="El nombre"><span class="error-msg"></span></div>
+                <div class="field"><label class="label" for="res-email">Email</label><input class="input" type="email" id="res-email" name="email" autocomplete="email" data-rules="required email" data-label="El email"><span class="error-msg"></span></div>
+              </div>
+              <div class="grid gap-5 sm:grid-cols-3">
+                <div class="field"><label class="label" for="res-telefono">Teléfono</label><input class="input" type="tel" id="res-telefono" name="telefono" inputmode="numeric" data-rules="required phone" data-label="El teléfono"><span class="error-msg"></span></div>
+                <div class="field">
+                  <label class="label" for="res-personas">Personas</label>
+                  <select class="input" id="res-personas" name="personas" data-rules="required" data-label="La cantidad" data-msg="Indica cuántas personas">
+                    <option value="">Selecciona</option>
+                    <option value="1">1 persona</option>
+                    <option value="2">2 personas</option>
+                    <option value="3">3 personas</option>
+                    <option value="4">4 personas</option>
+                    <option value="5">5 o más</option>
+                  </select>
+                  <span class="error-msg"></span>
+                </div>
+                <div class="field"><label class="label" for="res-fecha">Fecha</label><input class="input" type="date" id="res-fecha" name="fecha" data-rules="required future" data-label="La fecha" data-msg="Elige una fecha"><span class="error-msg"></span></div>
+              </div>
+              <div class="field"><label class="label" for="res-comentarios">Comentarios (opcional)</label><textarea class="input resize-y" id="res-comentarios" name="comentarios" rows="3" maxlength="500" placeholder="Detalles adicionales"></textarea></div>
+              <button type="submit" class="btn-primary justify-self-start"><i class="fa-solid fa-ticket" aria-hidden="true"></i> Solicitar reserva</button>
+            </form>
+          </div>
+          <div id="reservaSuccess" class="card flex flex-col items-center gap-4 p-12 text-center" hidden>
+            <span class="grid h-16 w-16 place-items-center rounded-full bg-carmine-500 text-2xl text-white"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+            <h2 class="font-display text-3xl text-cream-50">Reserva solicitada</h2>
+            <p class="text-muted">Te enviaremos la confirmación por email en las próximas horas.</p>
+            <button type="button" class="btn-ghost" data-reset="reservaForm">Hacer otra reserva</button>
+          </div>
+        </div>
+
+        <!-- PANEL: COLABORAR -->
+        <div class="mt-12 space-y-10" role="tabpanel" id="panel-colaborar" aria-labelledby="tab-colaborar" hidden>
+          <div>
+            <h2 class="font-display text-3xl text-cream-50">Tipos de colaboración</h2>
+            <p class="mt-2 text-muted">Si eres profesional del entretenimiento, fotógrafo, blogger o tienes un negocio, trabajemos juntos.</p>
+            <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <li class="card flex gap-4 p-6"><span class="icon-box"><i class="fa-solid fa-camera" aria-hidden="true"></i></span><div><h3 class="font-semibold text-cream-50">Fotógrafos</h3><p class="text-sm text-muted">Contenido visual de alta calidad</p></div></li>
+              <li class="card flex gap-4 p-6"><span class="icon-box"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i></span><div><h3 class="font-semibold text-cream-50">Bloggers</h3><p class="text-sm text-muted">Reseñas y artículos de cine</p></div></li>
+              <li class="card flex gap-4 p-6"><span class="icon-box"><i class="fa-solid fa-building" aria-hidden="true"></i></span><div><h3 class="font-semibold text-cream-50">Patrocinadores</h3><p class="text-sm text-muted">Alianzas comerciales</p></div></li>
+              <li class="card flex gap-4 p-6"><span class="icon-box"><i class="fa-solid fa-van-shuttle" aria-hidden="true"></i></span><div><h3 class="font-semibold text-cream-50">Transporte</h3><p class="text-sm text-muted">Servicios de traslado</p></div></li>
+              <li class="card flex gap-4 p-6"><span class="icon-box"><i class="fa-solid fa-utensils" aria-hidden="true"></i></span><div><h3 class="font-semibold text-cream-50">Gastronomía</h3><p class="text-sm text-muted">Proveedores para dulcería</p></div></li>
+              <li class="card flex gap-4 p-6"><span class="icon-box"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></span><div><h3 class="font-semibold text-cream-50">Influencers</h3><p class="text-sm text-muted">Colaboraciones de marketing</p></div></li>
+            </ul>
+          </div>
+
+          <form id="colaborarForm" class="card grid gap-5 p-6 sm:p-10" novalidate data-success="colaborarSuccess">
+            <h2 class="font-display text-3xl text-cream-50">Envía tu propuesta</h2>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div class="field"><label class="label" for="col-nombre">Nombre</label><input class="input" type="text" id="col-nombre" name="nombre" autocomplete="name" data-rules="required" data-label="El nombre"><span class="error-msg"></span></div>
+              <div class="field"><label class="label" for="col-email">Email</label><input class="input" type="email" id="col-email" name="email" autocomplete="email" data-rules="required email" data-label="El email"><span class="error-msg"></span></div>
+              <div class="field">
+                <label class="label" for="col-tipo">Tipo de colaboración</label>
+                <select class="input" id="col-tipo" name="tipo" data-rules="required" data-label="El tipo" data-msg="Elige un tipo de colaboración">
+                  <option value="">Selecciona</option>
+                  <option value="fotografia">Fotografía</option>
+                  <option value="blog">Blog</option>
+                  <option value="patrocinio">Patrocinio</option>
+                  <option value="transporte">Transporte</option>
+                  <option value="gastronomia">Gastronomía</option>
+                  <option value="influencer">Influencer</option>
+                  <option value="otro">Otro</option>
+                </select>
+                <span class="error-msg"></span>
+              </div>
+              <div class="field"><label class="label" for="col-empresa">Empresa o proyecto (opcional)</label><input class="input" type="text" id="col-empresa" name="empresa" placeholder="Nombre de tu empresa"></div>
+            </div>
+            <div class="field"><label class="label" for="col-web">Sitio web o redes (opcional)</label><input class="input" type="url" id="col-web" name="web" placeholder="https://ejemplo.com" data-rules="url" data-label="El enlace"><span class="error-msg"></span></div>
+            <div class="field">
+              <div class="flex justify-between"><label class="label" for="col-propuesta">Propuesta</label><span class="text-xs text-muted" data-count-for="col-propuesta">0/1000</span></div>
+              <textarea class="input min-h-[9rem] resize-y" id="col-propuesta" name="propuesta" maxlength="1000" placeholder="Describe tu propuesta de colaboración" data-rules="required" data-label="La propuesta" data-msg="Cuéntanos tu propuesta"></textarea>
+              <span class="error-msg"></span>
+            </div>
+            <button type="submit" class="btn-primary justify-self-start"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Enviar propuesta</button>
+          </form>
+          <div id="colaborarSuccess" class="card flex flex-col items-center gap-4 p-12 text-center" hidden>
+            <span class="grid h-16 w-16 place-items-center rounded-full bg-carmine-500 text-2xl text-white"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+            <h2 class="font-display text-3xl text-cream-50">Propuesta recibida</h2>
+            <p class="text-muted">Nuestro equipo la evaluará y te contactará en 48 horas.</p>
+            <button type="button" class="btn-ghost" data-reset="colaborarForm">Enviar otra propuesta</button>
+          </div>
+        </div>
+
+        <!-- PANEL: PREGUNTAS FRECUENTES -->
+        <div class="mt-12 grid gap-10 lg:grid-cols-[1.6fr_1fr]" role="tabpanel" id="panel-faq" aria-labelledby="tab-faq" hidden>
+          <div class="divide-y divide-ink-700 border-y border-ink-700" id="faq">
+            <details class="group py-2" name="faq">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-semibold text-cream-50 [&::-webkit-details-marker]:hidden">¿Cuál es el horario de atención?<i class="fa-solid fa-plus text-sm text-carmine-400 transition group-open:rotate-45" aria-hidden="true"></i></summary>
+              <p class="pb-5 text-sm leading-relaxed text-muted">Abrimos de lunes a viernes de 14:00 a 22:00, y los fines de semana de 12:00 a 23:00. Los feriados pueden variar, así que contáctanos para confirmar.</p>
+            </details>
+            <details class="group py-2" name="faq">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-semibold text-cream-50 [&::-webkit-details-marker]:hidden">¿Cómo puedo hacer una reserva?<i class="fa-solid fa-plus text-sm text-carmine-400 transition group-open:rotate-45" aria-hidden="true"></i></summary>
+              <p class="pb-5 text-sm leading-relaxed text-muted">Usa la pestaña Reservar, selecciona tu paquete y completa los datos. Recibirás una confirmación por email en las próximas horas.</p>
+            </details>
+            <details class="group py-2" name="faq">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-semibold text-cream-50 [&::-webkit-details-marker]:hidden">¿Puedo cancelar o cambiar mi reserva?<i class="fa-solid fa-plus text-sm text-carmine-400 transition group-open:rotate-45" aria-hidden="true"></i></summary>
+              <p class="pb-5 text-sm leading-relaxed text-muted">Sí, puedes cancelar o cambiar tu reserva sin costo hasta 24 horas antes de la fecha. Contacta a nuestro equipo para más detalles.</p>
+            </details>
+            <details class="group py-2" name="faq">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-semibold text-cream-50 [&::-webkit-details-marker]:hidden">¿Ofrecen paquetes para grupos grandes?<i class="fa-solid fa-plus text-sm text-carmine-400 transition group-open:rotate-45" aria-hidden="true"></i></summary>
+              <p class="pb-5 text-sm leading-relaxed text-muted">Sí, para grupos de más de 10 personas tenemos paquetes especiales. Elige Evento privado en reservas y te enviaremos una cotización.</p>
+            </details>
+            <details class="group py-2" name="faq">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-semibold text-cream-50 [&::-webkit-details-marker]:hidden">¿Cuáles son las formas de pago?<i class="fa-solid fa-plus text-sm text-carmine-400 transition group-open:rotate-45" aria-hidden="true"></i></summary>
+              <p class="pb-5 text-sm leading-relaxed text-muted">Aceptamos efectivo, tarjeta de crédito o débito y transferencias bancarias. Las reservas en línea se procesan con plataformas seguras.</p>
+            </details>
+            <details class="group py-2" name="faq">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-semibold text-cream-50 [&::-webkit-details-marker]:hidden">¿Hay estacionamiento disponible?<i class="fa-solid fa-plus text-sm text-carmine-400 transition group-open:rotate-45" aria-hidden="true"></i></summary>
+              <p class="pb-5 text-sm leading-relaxed text-muted">Sí, contamos con estacionamiento para nuestros clientes. Para más información, llámanos al +503 2100-0000.</p>
+            </details>
+            <details class="group py-2" name="faq">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-semibold text-cream-50 [&::-webkit-details-marker]:hidden">¿Cómo puedo colaborar con ustedes?<i class="fa-solid fa-plus text-sm text-carmine-400 transition group-open:rotate-45" aria-hidden="true"></i></summary>
+              <p class="pb-5 text-sm leading-relaxed text-muted">Usa la pestaña Colaborar para describir tu propuesta. Trabajamos con fotógrafos, bloggers, patrocinadores y más.</p>
+            </details>
+            <details class="group py-2" name="faq">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-semibold text-cream-50 [&::-webkit-details-marker]:hidden">¿Hay descuentos para estudiantes o grupos?<i class="fa-solid fa-plus text-sm text-carmine-400 transition group-open:rotate-45" aria-hidden="true"></i></summary>
+              <p class="pb-5 text-sm leading-relaxed text-muted">Sí, tenemos promociones especiales. Visítanos con tu carnet de estudiante o pregunta por nuestras ofertas actuales.</p>
+            </details>
+          </div>
+          <aside class="card h-fit space-y-4 p-8">
+            <span class="icon-box"><i class="fa-solid fa-headset" aria-hidden="true"></i></span>
+            <h2 class="font-display text-2xl text-cream-50">¿No encontraste tu respuesta?</h2>
+            <p class="text-sm text-muted">Escríbenos directamente y te responderemos en menos de 24 horas.</p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <button type="button" class="btn-primary btn-sm" data-goto="contacto">Contacto</button>
+              <button type="button" class="btn-ghost btn-sm" data-goto="encuentranos">Ubicación</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-component="footer"></div>
+</body>
+</html>

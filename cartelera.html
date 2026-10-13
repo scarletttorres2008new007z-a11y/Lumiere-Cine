@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartelera | Lumière Ciné</title>
+  <meta name="description" content="Todas las películas en cartelera y horarios de hoy en Lumière Ciné.">
+  <meta name="theme-color" content="#0A0A0B">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preload" href="assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/solid.min.css">
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/brands.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/cartelera.js" defer></script>
+</head>
+<body data-page="cartelera">
+  <div data-component="header"></div>
+
+  <main id="contenido" class="pt-20">
+    <header class="border-b border-ink-700 py-16 sm:py-24">
+      <div class="container-site space-y-5">
+        <p class="eyebrow animate-rise">Cartelera</p>
+        <h1 class="font-display text-5xl leading-none text-cream-50 animate-rise sm:text-7xl">Todas las películas <span class="italic text-carmine-500">en cartelera</span></h1>
+        <p class="section-lead animate-rise">Elige un horario y reserva tus entradas en segundos. Pagas al llegar a taquilla.</p>
+      </div>
+    </header>
+
+    <section class="py-14 sm:py-20" aria-label="Películas en cartelera">
+      <div class="container-site">
+        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div class="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 md:mx-0 md:px-0" id="genre-filters" role="group" aria-label="Filtrar por género"></div>
+          <div class="relative md:w-72">
+            <label for="movie-search" class="sr-only">Buscar película</label>
+            <i class="fa-solid fa-magnifying-glass pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm text-muted" aria-hidden="true"></i>
+            <input id="movie-search" type="search" placeholder="Buscar película" class="input rounded-full pl-11">
+          </div>
+        </div>
+
+        <div class="mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-movies="cartelera" id="movie-grid"></div>
+        <p id="movie-empty" class="mt-12 rounded-2xl border border-dashed border-ink-600 p-10 text-center text-muted" hidden>
+          No encontramos películas con ese criterio.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-ink-700 bg-ink-900 py-20 sm:py-28" aria-labelledby="t-proximos">
+      <div class="container-site">
+        <div class="reveal space-y-4">
+          <p class="eyebrow">Muy pronto</p>
+          <h2 id="t-proximos" class="section-title">Próximos estrenos</h2>
+        </div>
+        <div class="mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-movies="proximos"></div>
+      </div>
+    </section>
+  </main>
+
+  <div data-component="footer"></div>
+</body>
+</html>

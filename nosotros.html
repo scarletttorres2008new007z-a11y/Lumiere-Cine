@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosotros | Lumière Ciné</title>
+  <meta name="description" content="Conoce la historia y los valores de Lumière Ciné.">
+  <meta name="theme-color" content="#0A0A0B">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preload" href="assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/solid.min.css">
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/brands.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body data-page="nosotros">
+  <div data-component="header"></div>
+
+  <main id="contenido">
+    <section class="relative isolate flex min-h-[80svh] items-end overflow-hidden pb-16 pt-36 sm:pb-24">
+      <img src="assets/img/galeria/galeria-2.webp" alt="" class="absolute inset-0 -z-20 h-full w-full object-cover">
+      <div class="absolute inset-0 -z-10 bg-ink-950/80"></div>
+      <div class="container-site space-y-6">
+        <p class="eyebrow animate-rise">Nosotros</p>
+        <h1 class="max-w-4xl font-display text-5xl leading-none text-cream-50 animate-rise sm:text-7xl">Sobre <span class="italic text-carmine-500">Lumière Ciné</span></h1>
+        <p class="max-w-2xl text-lg leading-relaxed text-cream-300 animate-rise">
+          Creemos que el cine es más que entretenimiento: es una experiencia que conecta emociones, historias y personas.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-24 sm:py-32">
+      <div class="container-site grid gap-14 lg:grid-cols-2 lg:items-center">
+        <div class="reveal space-y-6">
+          <p class="eyebrow">Nuestra historia</p>
+          <h2 class="section-title">Un lugar donde las obras maestras nunca mueren</h2>
+          <p class="section-lead">
+            Nuestra plataforma permite explorar la cartelera actual, descubrir estrenos y conocer todos los detalles de cada película de manera rápida e intuitiva.
+          </p>
+          <p class="section-lead">
+            Detrás de cada función hay una sala cuidada al detalle, un proyector que respeta la imagen y un equipo que ama el cine tanto como tú.
+          </p>
+        </div>
+        <div class="reveal grid grid-cols-2 gap-4">
+          <img src="assets/img/galeria/galeria-1.webp" alt="Fachada del cine Lumière Ciné" loading="lazy" class="aspect-[3/4] w-full rounded-2xl object-cover">
+          <img src="assets/img/galeria/galeria-6.webp" alt="Proyector clásico" loading="lazy" class="mt-12 aspect-[3/4] w-full rounded-2xl object-cover">
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y border-ink-700 bg-ink-900 py-24 sm:py-32" aria-labelledby="t-valores">
+      <div class="container-site">
+        <div class="reveal max-w-2xl space-y-4">
+          <p class="eyebrow">Lo que nos mueve</p>
+          <h2 id="t-valores" class="section-title">Tres ideas guían cada función</h2>
+        </div>
+        <div class="mt-14 grid gap-5 md:grid-cols-3">
+          <article class="reveal card space-y-4 p-8">
+            <span class="icon-box"><i class="fa-solid fa-clapperboard" aria-hidden="true"></i></span>
+            <h3 class="font-display text-2xl text-cream-50">Curaduría</h3>
+            <p class="text-sm leading-relaxed text-muted">Estrenos que vale la pena ver en pantalla grande y clásicos que merecen volver a ella.</p>
+          </article>
+          <article class="reveal card space-y-4 p-8" style="transition-delay:90ms">
+            <span class="icon-box"><i class="fa-solid fa-couch" aria-hidden="true"></i></span>
+            <h3 class="font-display text-2xl text-cream-50">Confort</h3>
+            <p class="text-sm leading-relaxed text-muted">Butacas amplias, sonido envolvente y salas diseñadas para olvidarte del reloj.</p>
+          </article>
+          <article class="reveal card space-y-4 p-8" style="transition-delay:180ms">
+            <span class="icon-box"><i class="fa-solid fa-people-group" aria-hidden="true"></i></span>
+            <h3 class="font-display text-2xl text-cream-50">Comunidad</h3>
+            <p class="text-sm leading-relaxed text-muted">Un punto de encuentro para conversar de cine antes y después de cada función.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 sm:py-32">
+      <div class="container-site">
+        <figure class="reveal mx-auto max-w-4xl text-center">
+          <blockquote class="font-display text-4xl leading-tight text-cream-50 sm:text-6xl">
+            El cine no solo se observa, <span class="italic text-carmine-500">se siente.</span>
+          </blockquote>
+          <div class="mx-auto mt-8 h-px w-16 bg-carmine-500"></div>
+          <div class="mt-10 flex flex-wrap justify-center gap-3">
+            <a href="cartelera.html" class="btn-primary">Ver cartelera</a>
+            <a href="autores.html" class="btn-ghost">Conoce al equipo</a>
+          </div>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <div data-component="footer"></div>
+</body>
+</html>

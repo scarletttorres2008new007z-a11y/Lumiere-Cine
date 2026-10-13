@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumière Ciné | Cine de autor en San Salvador</title>
+  <meta name="description" content="Cartelera, próximos estrenos y salas VIP en Lumière Ciné, San Salvador.">
+  <meta name="theme-color" content="#0A0A0B">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preload" href="assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/solid.min.css">
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/brands.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body data-page="inicio">
+  <div data-component="header"></div>
+
+  <main id="contenido">
+    <!-- HERO -->
+    <section class="relative isolate flex min-h-[100svh] items-end overflow-hidden pb-16 pt-32 sm:pb-24">
+      <img src="assets/img/sitio/sala-de-cine.webp" alt="" class="absolute inset-0 -z-20 h-full w-full object-cover" fetchpriority="high">
+      <div class="absolute inset-0 -z-10 bg-ink-950/75"></div>
+
+      <div class="container-site">
+        <p class="eyebrow animate-rise">Cine de autor en San Salvador</p>
+        <h1 class="mt-6 font-display text-[clamp(3.5rem,13vw,10rem)] leading-[0.9] text-cream-50 animate-rise [animation-delay:120ms]">
+          Lumière <span class="italic text-carmine-500">ciné</span>
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-cream-300 animate-rise [animation-delay:220ms]">
+          Estrenos, clásicos y salas pensadas para que cada función se recuerde. El cine no solo se observa, se siente.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3 animate-rise [animation-delay:320ms]">
+          <a href="cartelera.html" class="btn-primary"><i class="fa-solid fa-film" aria-hidden="true"></i> Ver cartelera</a>
+          <a href="galeria.html" class="btn-ghost">Explorar galería</a>
+        </div>
+
+        <dl class="mt-16 grid gap-px overflow-hidden rounded-2xl border border-ink-700 bg-ink-700 sm:grid-cols-3">
+          <div class="flex items-center gap-4 bg-ink-950 p-5">
+            <span class="icon-box"><i class="fa-solid fa-couch" aria-hidden="true"></i></span>
+            <div><dt class="text-sm font-semibold text-cream-50">Salas VIP</dt><dd class="text-sm text-muted">Butacas reclinables de terciopelo</dd></div>
+          </div>
+          <div class="flex items-center gap-4 bg-ink-950 p-5">
+            <span class="icon-box"><i class="fa-solid fa-clock" aria-hidden="true"></i></span>
+            <div><dt class="text-sm font-semibold text-cream-50">Funciones diarias</dt><dd class="text-sm text-muted">De lunes a domingo, 14:00 a 00:00</dd></div>
+          </div>
+          <div class="flex items-center gap-4 bg-ink-950 p-5">
+            <span class="icon-box"><i class="fa-solid fa-martini-glass" aria-hidden="true"></i></span>
+            <div><dt class="text-sm font-semibold text-cream-50">Le Bar de Nuit</dt><dd class="text-sm text-muted">Un brindis antes y después</dd></div>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- CARTELERA -->
+    <section class="py-24 sm:py-32" aria-labelledby="t-cartelera">
+      <div class="container-site">
+        <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div class="reveal space-y-4">
+            <p class="eyebrow">Hoy en cartelera</p>
+            <h2 id="t-cartelera" class="section-title">Películas destacadas</h2>
+          </div>
+          <a href="cartelera.html" class="reveal group inline-flex items-center gap-2 text-sm font-semibold text-cream-100 hover:text-white">
+            Ver toda la cartelera <i class="fa-solid fa-arrow-right transition group-hover:translate-x-1" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-movies="cartelera"></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section class="border-y border-ink-700 bg-ink-900 py-24 sm:py-32" aria-labelledby="t-experiencia">
+      <div class="container-site grid items-center gap-14 lg:grid-cols-2">
+        <div class="reveal relative">
+          <img src="assets/img/galeria/galeria-3.webp" alt="Butaca VIP de terciopelo rojo" loading="lazy" class="aspect-[4/5] w-full rounded-3xl object-cover">
+          <div class="absolute -bottom-6 right-6 rounded-2xl bg-carmine-500 px-6 py-5 text-white sm:-right-6">
+            <p class="font-display text-4xl leading-none">VIP</p>
+            <p class="mt-1 text-xs font-semibold uppercase tracking-[0.2em]">Sala + cena gourmet</p>
+          </div>
+        </div>
+        <div class="reveal space-y-8">
+          <div class="space-y-4">
+            <p class="eyebrow">La experiencia</p>
+            <h2 id="t-experiencia" class="section-title">Elige cómo quieres vivir tu función</h2>
+            <p class="section-lead">Desde una tarde de estreno con palomitas hasta una sala completa para tu evento privado.</p>
+          </div>
+          <ul class="divide-y divide-ink-700 border-y border-ink-700">
+            <li class="flex items-center justify-between gap-4 py-5">
+              <div><p class="font-semibold text-cream-50">Premier</p><p class="text-sm text-muted">Sala estándar y palomitas</p></div>
+              <p class="font-display text-2xl text-cream-50">$12</p>
+            </li>
+            <li class="flex items-center justify-between gap-4 py-5">
+              <div><p class="font-semibold text-cream-50">Gold</p><p class="text-sm text-muted">Sala preferente y combo</p></div>
+              <p class="font-display text-2xl text-cream-50">$25</p>
+            </li>
+            <li class="flex items-center justify-between gap-4 py-5">
+              <div><p class="font-semibold text-cream-50">VIP</p><p class="text-sm text-muted">Sala VIP y cena gourmet</p></div>
+              <p class="font-display text-2xl text-cream-50">$45</p>
+            </li>
+            <li class="flex items-center justify-between gap-4 py-5">
+              <div><p class="font-semibold text-cream-50">Evento privado</p><p class="text-sm text-muted">La sala completa para ti</p></div>
+              <p class="text-sm font-semibold uppercase tracking-wider text-carmine-400">Cotizar</p>
+            </li>
+          </ul>
+          <a href="contacto.html#reservar" class="btn-primary">Reservar experiencia <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRÓXIMOS ESTRENOS -->
+    <section class="py-24 sm:py-32" aria-labelledby="t-proximos">
+      <div class="container-site">
+        <div class="reveal space-y-4">
+          <p class="eyebrow">Muy pronto</p>
+          <h2 id="t-proximos" class="section-title">Próximos estrenos</h2>
+          <p class="section-lead">Activa el aviso y te escribimos en cuanto abra la preventa.</p>
+        </div>
+        <div class="mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-movies="proximos"></div>
+      </div>
+    </section>
+
+    <!-- MEMBRESÍA CTA -->
+    <section class="pb-24 sm:pb-32">
+      <div class="container-site">
+        <div class="reveal grid items-center gap-8 rounded-3xl bg-carmine-500 p-10 text-white sm:p-14 lg:grid-cols-[1fr_auto]">
+          <div class="space-y-3">
+            <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/80">Membresía Lumière</p>
+            <h2 class="font-display text-4xl leading-tight sm:text-5xl">Más cine, menos esperas.</h2>
+            <p class="max-w-xl text-white/85">Preventas exclusivas, descuentos en dulcería y funciones solo para miembros.</p>
+          </div>
+          <a href="membresia.html" class="btn-light">Ver planes <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-component="footer"></div>
+</body>
+</html>

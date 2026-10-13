@@ -151,7 +151,7 @@
     const nav = PAGES.map((p) => `<li><a class="text-muted transition hover:text-cream-50" href="${p.href}">${p.label}</a></li>`).join('');
 
     slot.outerHTML = `
-      <footer class="relative border-t border-ink-700 bg-ink-900">
+      <footer class="relative overflow-hidden border-t border-ink-700 bg-ink-900">
         <div class="filmstrip" aria-hidden="true"></div>
         <div class="container-site grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.4fr]">
           <div class="space-y-5">
@@ -182,6 +182,10 @@
             </form>
           </div>
         </div>
+        <div class="container-site">
+          <button type="button" class="next-show group" data-next-show></button>
+          <p class="footer-word" aria-hidden="true">Lumière <span class="italic text-carmine-500">ciné</span></p>
+        </div>
         <div class="border-t border-ink-700">
           <div class="container-site flex flex-col items-center justify-between gap-3 py-6 text-xs text-muted sm:flex-row">
             <p>&copy; ${new Date().getFullYear()} Lumière Ciné. Todos los derechos reservados.</p>
@@ -190,6 +194,22 @@
         </div>
       </footer>
       <div id="toast-region" class="pointer-events-none fixed inset-x-0 bottom-6 z-[90] flex flex-col items-center gap-2 px-4" role="status" aria-live="polite"></div>`;
+
+    // Próxima función de hoy (o la primera de mañana)
+    const nextBtn = document.querySelector('[data-next-show]');
+    const shows = DATA.cartelera.flatMap((m) => m.horarios.map((h) => ({ m, h }))).sort((a, b) => a.h.localeCompare(b.h));
+    const today = new Date();
+    const next = shows.find(({ h }) => !isPast(h, today));
+    const show = next || shows[0];
+    if (show) {
+      const inner = `
+        <span class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.25em] text-gold-400"><span class="h-2 w-2 animate-pulse rounded-full bg-gold-400"></span>${next ? 'Próxima función hoy' : 'Primera función de mañana'}</span>
+        <span class="font-display text-2xl text-cream-50 sm:text-3xl"><span class="font-mono text-xl text-carmine-400 sm:text-2xl">${show.h}</span> ${esc(show.m.titulo)}</span>
+        <span class="ml-auto hidden items-center gap-2 text-sm font-semibold text-cream-300 transition group-hover:text-white sm:inline-flex">${next ? 'Aparta tu butaca' : 'Ver funciones'} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>`;
+      nextBtn.outerHTML = next
+        ? `<button type="button" class="next-show group" data-buy="${show.m.id}" data-time="${show.h}">${inner}</button>`
+        : `<a href="cartelera.html" class="next-show group">${inner}</a>`;
+    } else nextBtn.remove();
 
     document.querySelector('[data-top]').addEventListener('click', (e) => {
       e.preventDefault();
@@ -497,7 +517,8 @@
           <h2 id="modal-title" class="font-display text-3xl text-cream-50">¡Tu función está lista!</h2>
           <p class="mt-1 text-sm text-muted">Enviamos una copia a ${esc(buy.email)}</p>
         </div>
-        <article class="ticket mx-auto max-w-md" aria-label="Boleto">
+        <article class="ticket relative mx-auto max-w-md" aria-label="Boleto">
+          <span class="stamp" aria-hidden="true">Admitido</span>
           <div class="flex gap-4 p-5">
             <img src="${m.poster}" alt="" class="h-28 w-[4.7rem] shrink-0 rounded-md object-cover">
             <div class="min-w-0 space-y-1">
@@ -567,22 +588,43 @@
     if (e.target.closest('[data-print]')) window.print();
   });
 
-  modal.addEventListener('submit', (e) => {
+  // Estado de carga en el botón antes de mostrar el resultado
+  function busy(form, label = 'Procesando') {
+    const btn = form.querySelector('[type="submit"]');
+    if (!btn) return Promise.resolve();
+    const original = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = `<span class="spinner" aria-hidden="true"></span> ${label}`;
+    return new Promise((r) =>
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = original;
+        r();
+      }, 900)
+    );
+  }
+
+  modal.addEventListener('submit', async (e) => {
     const form = e.target;
     e.preventDefault();
+    if (form.dataset.busy) return;
 
     if (form.matches('[data-buy-form]')) {
       buy.name = form.elements.fullname.value.trim();
       buy.email = form.email.value.trim();
       const okName = setFieldError(form.elements.fullname, buy.name ? '' : 'Escribe tu nombre');
       const okMail = setFieldError(form.email, isEmail(buy.email) ? '' : 'Escribe un email válido');
-      if (okName && okMail) buyStep4();
-      else form.querySelector('.has-error').focus();
+      if (!okName || !okMail) return form.querySelector('.has-error').focus();
+      form.dataset.busy = '1';
+      await busy(form, 'Apartando butacas');
+      buyStep4();
     }
 
     if (form.matches('[data-notify-form]')) {
       const email = form.email.value.trim();
       if (!setFieldError(form.email, isEmail(email) ? '' : 'Escribe un email válido')) return form.email.focus();
+      form.dataset.busy = '1';
+      await busy(form, 'Activando');
       const id = form.dataset.notifyForm;
       setNotify([...new Set([...getNotify(), id])]);
       refreshNotifyButtons();
@@ -595,6 +637,8 @@
       const okName = setFieldError(form.elements.fullname, name ? '' : 'Escribe tu nombre');
       const okMail = setFieldError(form.email, isEmail(email) ? '' : 'Escribe un email válido');
       if (!okName || !okMail) return form.querySelector('.has-error').focus();
+      form.dataset.busy = '1';
+      await busy(form, 'Creando tu tarjeta');
       const plan = DATA.planes[form.dataset.memberForm];
       const number = Array.from({ length: 4 }, () => String(Math.floor(1000 + Math.random() * 9000))).join(' ');
       openModal(
@@ -915,6 +959,7 @@
      Arranque
      ------------------------------------------------------------------------ */
   window.Lumiere = {
+    busy,
     toast,
     initReveal,
     escapeHTML: esc,

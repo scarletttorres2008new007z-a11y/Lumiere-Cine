@@ -134,7 +134,7 @@ document.addEventListener('lumiere:ready', () => {
       field.addEventListener('input', () => field.classList.contains('has-error') && validateField(field));
     });
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       let valid = fields.map(validateField).every(Boolean);
 
@@ -149,6 +149,7 @@ document.addEventListener('lumiere:ready', () => {
         return;
       }
 
+      await Lumiere.busy(form, 'Enviando');
       (document.getElementById(form.dataset.hide) || form).hidden = true;
       const success = document.getElementById(form.dataset.success);
       success.hidden = false;

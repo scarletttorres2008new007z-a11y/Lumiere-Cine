@@ -17,6 +17,7 @@
 
   <script src="assets/js/data.js" defer></script>
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/detalles.js" defer></script>
   <script src="assets/js/cartelera.js" defer></script>
 </head>
 <body data-page="cartelera">
@@ -81,9 +82,12 @@
           <div class="grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-movies="cartelera" id="movie-grid"></div>
         </div>
 
-        <p id="movie-empty" class="mt-10 rounded-2xl border border-dashed border-ink-600 p-10 text-center text-muted" hidden>
-          No encontramos películas con ese criterio.
-        </p>
+        <div id="movie-empty" class="mt-10 flex flex-col items-center gap-4 rounded-3xl border border-dashed border-ink-600 px-6 py-16 text-center" hidden>
+          <span class="empty-reel" aria-hidden="true"><i class="fa-solid fa-film"></i></span>
+          <p class="font-display text-3xl text-cream-50">Esta escena quedó en la sala de edición</p>
+          <p class="max-w-sm text-sm text-muted">No encontramos funciones con ese criterio. Prueba con otro género u otra palabra.</p>
+          <button type="button" class="btn-ghost btn-sm" data-clear><i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Limpiar filtros</button>
+        </div>
       </div>
     </section>
 

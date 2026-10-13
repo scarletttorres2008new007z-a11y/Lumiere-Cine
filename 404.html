@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escena perdida | Lumière Ciné</title>
+  <meta name="description" content="La página que buscas no existe.">
+  <meta name="theme-color" content="#0A0A0B">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preload" href="assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/solid.min.css">
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/brands.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/detalles.js" defer></script>
+</head>
+<body data-page="404">
+  <div data-component="header"></div>
+
+  <main id="contenido" class="relative isolate flex min-h-[100svh] items-center overflow-hidden pb-16 pt-28">
+    <span class="pointer-events-none absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 select-none text-center font-display text-[42vw] italic leading-none text-ink-900" aria-hidden="true">404</span>
+    <div class="container-site grid items-center gap-14 lg:grid-cols-[auto_1fr]">
+      <div class="reel-404 mx-auto" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="space-y-6 text-center lg:text-left">
+        <p class="font-mono text-xs uppercase tracking-[0.4em] text-gold-400">Rollo 404 · Escena perdida</p>
+        <h1 class="font-display text-5xl leading-none text-cream-50 sm:text-7xl">Esta escena se <span class="italic text-carmine-500">quedó en el corte</span></h1>
+        <p class="mx-auto max-w-lg text-lg text-cream-300 lg:mx-0">La página que buscas no existe o cambió de sala. Mientras el proyeccionista la encuentra, te llevamos de vuelta a la función.</p>
+        <div class="flex flex-wrap justify-center gap-3 lg:justify-start">
+          <a href="index.html" class="btn-primary"><i class="fa-solid fa-house" aria-hidden="true"></i> Volver al inicio</a>
+          <a href="cartelera.html" class="btn-ghost">Ver la cartelera</a>
+          <button type="button" class="btn-ghost" data-quickbuy><i class="fa-solid fa-ticket" aria-hidden="true"></i> Comprar entradas</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div data-component="footer"></div>
+</body>
+</html>

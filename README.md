@@ -17,12 +17,13 @@ Abre `index.html` en el navegador. También puedes publicarlo tal cual en GitHub
 
 ```
 index.html  cartelera.html  galeria.html  nosotros.html
-autores.html  membresia.html  contacto.html
+autores.html  membresia.html  contacto.html  404.html
 assets/
   css/styles.css        CSS compilado (no editar a mano)
   js/data.js            Películas, estrenos, galería y precio de entrada
   js/main.js            Cabecera, pie, tarjetas, modal de compra, avisos
-  js/cartelera.js       Filtros por género y búsqueda
+  js/detalles.js        Telón entre páginas, grano, cursor, botones magnéticos
+  js/cartelera.js       Días, tablero de funciones, filtros y búsqueda
   js/galeria.js         Galería y visor de imágenes
   js/contacto.js        Pestañas, paquetes y validación de formularios
   img/                  Imágenes optimizadas en WebP

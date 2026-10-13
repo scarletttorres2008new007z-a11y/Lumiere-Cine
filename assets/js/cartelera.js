@@ -145,6 +145,15 @@ document.addEventListener('lumiere:ready', () => {
     refresh();
   });
 
+  document.querySelector('[data-clear]').addEventListener('click', () => {
+    state.genre = 'Todas';
+    state.query = '';
+    search.value = '';
+    filters.querySelectorAll('[data-genre]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.genre === 'Todas')));
+    refresh();
+    search.focus();
+  });
+
   search.addEventListener('input', () => {
     state.query = search.value.trim().toLowerCase();
     refresh();
